@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AdaptUiModelBase } from 'src/app/Adaptive-UI-DataModel/adapt-ui-model-base';
 
 @Component({
@@ -10,7 +10,8 @@ export class AdaptiveUibuttonComponent implements OnInit {
 
   public isBlueVar: boolean;
   public model: AdaptUiModelBase;
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
     this.model.applyAdaptation(<any>this);

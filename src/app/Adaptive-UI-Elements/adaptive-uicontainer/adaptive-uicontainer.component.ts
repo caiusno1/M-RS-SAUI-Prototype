@@ -1,5 +1,5 @@
 import { AdaptUiModelBase } from './../../Adaptive-UI-DataModel/adapt-ui-model-base';
-import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, ViewChildren, OnChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChildren, ChangeDetectorRef } from '@angular/core';
 import { AdaptiveUIBindingAnchorDirective } from 'src/app/AdaptiveUIBindingAnchorDirective';
 
 @Component({
@@ -8,25 +8,26 @@ import { AdaptiveUIBindingAnchorDirective } from 'src/app/AdaptiveUIBindingAncho
   styleUrls: ['./adaptive-uicontainer.component.css']
 })
 export class AdaptiveUIContainerComponent {
-  @Input() doNotGoDeeper = false;
-  currentAdIndex = -1;
+  private _model: AdaptUiModelBase;
   @ViewChildren(AdaptiveUIBindingAnchorDirective) adHost: AdaptiveUIBindingAnchorDirective[];
-  public model: AdaptUiModelBase;
+  public set model(uimodel: AdaptUiModelBase) {
+    this._model = uimodel;
+  }
+  public get model() {
+    return this._model;
+  }
   public children: AdaptUiModelBase[];
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private changeDec: ChangeDetectorRef) { }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewChecked() {
-  this.loadComponent();
-  this.changeDec.detectChanges();
+   this.loadComponent();
+   this.changeDec.detectChanges();
   }
 
   public loadComponent() {
-    if (this.doNotGoDeeper) {
-      return;
-    }
     let  i = 0;
-    if (this.adHost !== null) {
+    if (this.adHost !== undefined) {
     this.adHost.forEach(element => {
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.children[i].Component);
       const viewContainerRef = element.viewContainerRef;

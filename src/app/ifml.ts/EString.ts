@@ -1,2 +1,0 @@
-
-export type EString = string;
