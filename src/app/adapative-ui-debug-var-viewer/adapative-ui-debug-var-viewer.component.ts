@@ -7,7 +7,7 @@ import { AdaptUiModelBase } from 'src/app/Adaptive-UI-DataModel/adapt-ui-model-b
 import { ContextModelContainer } from './../ContextModell/ContextModelContainer';
 import { Component, OnInit, Input, ComponentRef } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map} from 'rxjs/operators';
+import { map, last } from 'rxjs/operators';
 @Component({
   selector: 'app-adapative-ui-debug-var-viewer',
   templateUrl: './adapative-ui-debug-var-viewer.component.html',
@@ -19,8 +19,9 @@ export class AdapativeUIDebugVarViewerComponent implements OnInit {
   public adaptationRules: Observable<any[]>;
   constructor(ctxchaServ: ContextChangeService, uimdServ: AdaptiveUIModelService, reServ: RuleEngineService) {
     this.context = ctxchaServ.CTXObserver;
-    this.uimodel = uimdServ.UIdataModel.pipe<string>(map((dm) =>
-    JSON.stringify(dm.toJSON())
+    this.uimodel = uimdServ.UIdataModel.pipe<string>(map((dm) => {
+      return dm.toJSON();
+    }
     ));
     this.adaptationRules = reServ.ruleSet;
   }

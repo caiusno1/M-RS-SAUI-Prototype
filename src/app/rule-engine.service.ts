@@ -1,4 +1,4 @@
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject, OperatorFunction } from 'rxjs';
 import { AdaptiveUIModelService } from './adaptive-uimodel.service';
 import { AdaptationService } from './adaptation.service';
 import { Adaptation } from './adaptation';
@@ -29,7 +29,7 @@ export class RuleEngineService {
   public assert(fact) {
     this.session.assert(fact);
   }
-  public match() {
-    this.session.match();
+  public match(func) {
+    this.session.match(func);
   }
 }

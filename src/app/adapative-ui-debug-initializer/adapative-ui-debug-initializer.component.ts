@@ -7,10 +7,8 @@ import { ContextChangeService } from './../context-change.service';
 import { Component, OnInit, Input, Host } from '@angular/core';
 import { AdaptUiModelBase } from '../Adaptive-UI-DataModel/adapt-ui-model-base';
 import { AdaptiveUibuttonComponent } from '../Adaptive-UI-Elements/adaptive-uibutton/adaptive-uibutton.component';
-import { AdaptiveUIContainerComponent } from '../Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
 import { Adaptation, AdaptationKind } from '../adaptation';
 import { ContextModelContainer } from '../ContextModell/ContextModelContainer';
-import { Button } from 'protractor';
 
 @Component({
   selector: 'app-adapative-ui-debug-initializer',
@@ -31,11 +29,6 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
   public adaptUI() {
     this.ctxchaServ.ctx.userContext.blind = !this.ctxchaServ.ctx.userContext.blind;
     this.ctxchaServ.CTXObserver.next(this.ctxchaServ.ctx);
-    /*const button = new AdaptUiModelBase;
-    button.Component = AdaptiveUibuttonComponent;
-    button.children = null;
-    this.uidmServ.model.children.push(button);*/
-    this.uidmServ.UIdataModel.next(this.uidmServ.model);
   }
   public initializeUIModel() {
     if (this.initOnlyOnce) {
@@ -46,12 +39,13 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
       const button = new AdaptUiModelBase;
       button.Component = AdaptiveUibuttonComponent;
       button.children = null;
+      button.tags = 'rem';
       UIdataModel.children = [button];
       this.uidmServ.UIdataModel.next(UIdataModel);
       /* Rule engine init*/
       this.ctxchaServ.CTXObserver.subscribe((ctx) => {
         this.ruleEngine.assert(ctx);
-        this.ruleEngine.match();
+        this.ruleEngine.match(undefined);
       });
       const adapt = new Adaptation;
       adapt.params = {'background-color': 'blue'};
@@ -62,13 +56,16 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
       adapt2.targetTags = ['test'];
       adapt2.kind = AdaptationKind.Style;
       const adapt3 = new Adaptation;
-      adapt3.params = [{'color': 'green'}, {'type': 'AdaptiveUibuttonComponent'}];
+      adapt3.params = [{'color': 'green'}, {'type': 'AdaptiveUibuttonComponent', 'tags': 'zed'}];
       adapt3.targetTags = ['test'];
       adapt3.kind = AdaptationKind.Add;
+      const adapt4 = new Adaptation;
+      adapt4.targetTags = ['zed'];
+      adapt4.kind = AdaptationKind.Remove;
       this.ruleEngine.addRule('blindRule', [ContextModelContainer, 'ctx', 'ctx.userContext.blind'], adapt );
       this.ruleEngine.addRule('blindRule2', [ContextModelContainer, 'ctx', 'ctx.userContext.blind'], adapt3 );
       this.ruleEngine.addRule('noneblindRule', [ContextModelContainer, 'ctx', '!ctx.userContext.blind'], adapt2 );
-
+      this.ruleEngine.addRule('noneblindRule2', [ContextModelContainer, 'ctx', '!ctx.userContext.blind'], adapt4 );
     }
   }
 

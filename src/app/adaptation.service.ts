@@ -1,3 +1,4 @@
+import { ModelRemoveAdaptationVisitor } from './model-remove-adaptation-visitor';
 import { ModelAddAdaptationVisitor } from './model-add-adaptation-visitor';
 import { Adaptation, AdaptationKind } from './adaptation';
 import { AdaptiveUIModelService } from './adaptive-uimodel.service';
@@ -12,11 +13,6 @@ import { StyleAdaptationVisitor } from './style-adaptation-visitor';
 })
 export class AdaptationService {
   constructor(private uimdServ: AdaptiveUIModelService) {}
-  /*public execute(code: SafeStyle, type: number, targetModelElement: AdaptUiModelBase) {
-    console.log('adaptation');
-    targetModelElement.style = code;
-    console.log('adaptation2');
-  }*/
   public execute(adapt: Adaptation) {
     switch (adapt.kind) {
       case AdaptationKind.Style:
@@ -31,14 +27,13 @@ export class AdaptationService {
         const avisitor = new ModelAddAdaptationVisitor();
         avisitor._tags = adapt.targetTags;
         avisitor._style = adapt.params[0];
-        avisitor.AddType = adapt.params[1];
+        avisitor.AddType = adapt.params[1].type;
+        avisitor._targetTags = adapt.params[1].tags;
         avisitor.visit(this.uimdServ.model);
         break;
-      case AdaptationKind.Add:
-        const rvisitor = new ModelAddAdaptationVisitor();
+      case AdaptationKind.Remove:
+        const rvisitor = new ModelRemoveAdaptationVisitor();
         rvisitor._tags = adapt.targetTags;
-        rvisitor._style = adapt.params[0];
-        rvisitor.AddType = adapt.params[1];
         rvisitor.visit(this.uimdServ.model, null);
         break;
     }
