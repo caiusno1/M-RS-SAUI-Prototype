@@ -1,3 +1,4 @@
+import { AdaptiveUIContainerComponent } from './../Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
 import { StyleAdaptationVisitor } from './../style-adaptation-visitor';
 import { AdaptiveUIComponentReflectionService } from './../adaptive-uicomponent-reflection.service';
 import { RuleEngineService } from './../rule-engine.service';
@@ -9,6 +10,9 @@ import { AdaptUiModelBase } from '../Adaptive-UI-DataModel/adapt-ui-model-base';
 import { AdaptiveUibuttonComponent } from '../Adaptive-UI-Elements/adaptive-uibutton/adaptive-uibutton.component';
 import { Adaptation, AdaptationKind } from '../adaptation';
 import { ContextModelContainer } from '../ContextModell/ContextModelContainer';
+import { RoutingModel, AdaptiveRoute } from '../Adaptive-UI-DataModel/routing-model';
+import { Router } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-adapative-ui-debug-initializer',
@@ -21,7 +25,8 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
   constructor(private ctxchaServ: ContextChangeService,
     private uidmServ: AdaptiveUIModelService,
     private ruleEngine: RuleEngineService,
-    private reflectServ: AdaptiveUIComponentReflectionService) {
+    private reflectServ: AdaptiveUIComponentReflectionService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -33,6 +38,7 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
   public initializeUIModel() {
     if (this.initOnlyOnce) {
       this.initOnlyOnce = false;
+      //
       const UIdataModel = new AdaptUiModelBase;
       UIdataModel.tags = 'test';
       UIdataModel.Component = this.reflectServ.AdaptiveUIComponentDict['AdaptiveUIContainerComponent'];
@@ -42,6 +48,16 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
       button.tags = 'rem';
       UIdataModel.children = [button];
       this.uidmServ.UIdataModel.next(UIdataModel);
+      // Routing Model
+      const routingModel = new RoutingModel;
+      const UIdataModel2 = new AdaptUiModelBase;
+      UIdataModel2.Component = AdaptiveUIContainerComponent;
+      UIdataModel2.style = {'background-color': 'yellow'};
+      routingModel.routes.push(new AdaptiveRoute('', UIdataModel));
+      routingModel.routes.push(new AdaptiveRoute('info', UIdataModel2));
+      this.uidmServ.routingModel.next(routingModel);
+
+
       /* Rule engine init*/
       this.ctxchaServ.CTXObserver.subscribe((ctx) => {
         this.ruleEngine.assert(ctx);
@@ -67,6 +83,12 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
       this.ruleEngine.addRule('noneblindRule', [ContextModelContainer, 'ctx', '!ctx.userContext.blind'], adapt2 );
       this.ruleEngine.addRule('noneblindRule2', [ContextModelContainer, 'ctx', '!ctx.userContext.blind'], adapt4 );
     }
+  }
+  public routeMe() {
+    this.router.navigateByUrl('info');
+  }
+  public routeMeToDefault() {
+    this.router.navigateByUrl('');
   }
 
 }
