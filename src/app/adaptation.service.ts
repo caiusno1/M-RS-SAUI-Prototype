@@ -20,7 +20,10 @@ export class AdaptationService {
         const svisitor = new StyleAdaptationVisitor();
         svisitor._tags = adapt.targetTags;
         svisitor._style = adapt.params;
-        svisitor.visit(this.uimdServ.model);
+        for ( const route of this.uimdServ.routingModel.getValue().routes) {
+          svisitor.visit(route.model);
+        }
+        // svisitor.visit(this.uimdServ.model);
         // console.log('adaptation2');
         break;
       case AdaptationKind.Add:
@@ -29,12 +32,18 @@ export class AdaptationService {
         avisitor._style = adapt.params[0];
         avisitor.AddType = adapt.params[1].type;
         avisitor._targetTags = adapt.params[1].tags;
-        avisitor.visit(this.uimdServ.model);
+        for ( const route of this.uimdServ.routingModel.getValue().routes) {
+          avisitor.visit(route.model);
+        }
+        // avisitor.visit(this.uimdServ.model);
         break;
       case AdaptationKind.Remove:
         const rvisitor = new ModelRemoveAdaptationVisitor();
         rvisitor._tags = adapt.targetTags;
-        rvisitor.visit(this.uimdServ.model, null);
+        for ( const route of this.uimdServ.routingModel.getValue().routes) {
+          rvisitor.visit(route.model, null);
+        }
+        // rvisitor.visit(this.uimdServ.model, null);
         break;
     }
     this.uimdServ.UIdataModel.next(this.uimdServ.model);

@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { AdaptiveUIContainerComponent } from '../Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
 import { AdaptiveUIModelService } from '../adaptive-uimodel.service';
 import { AdaptUiModelBase } from '../Adaptive-UI-DataModel/adapt-ui-model-base';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { url } from 'inspector';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-adaptive-uicore',

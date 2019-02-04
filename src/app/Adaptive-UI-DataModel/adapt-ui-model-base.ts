@@ -5,7 +5,7 @@ export class AdaptUiModelBase {
   public children: AdaptUiModelBase[];
   public Component: Type<any>;
   private _ComponentInstance: AdaptiveUielementbase;
-  public set  ComponentInstace(instance) {
+  public set ComponentInstace(instance) {
     this._ComponentInstance = instance;
     this.style = this._style;
   }
