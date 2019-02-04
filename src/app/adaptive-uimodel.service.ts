@@ -1,24 +1,25 @@
-import { AdaptiveUICoreComponent } from './adaptive-uicore/adaptive-uicore.component';
-import { map } from 'rxjs/operators';
-import { AdaptUiModelBase } from 'src/app/Adaptive-UI-DataModel/adapt-ui-model-base';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Website } from './AngularDSL/Website';
+import {  BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { RoutingModel, AdaptiveRoute } from './Adaptive-UI-DataModel/routing-model';
 import { Router, Route} from '@angular/router';
+import { Page } from './AngularDSL/Page';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdaptiveUIModelService {
-  public UIdataModel: Subject<AdaptUiModelBase>;
-  public model: AdaptUiModelBase;
-  public routingModel: BehaviorSubject<RoutingModel>;
-  public routing: RoutingModel;
+  public UIdataModel: BehaviorSubject<Page>;
+  public websiteModel: BehaviorSubject<Website>;
+  public routing: BehaviorSubject<RoutingModel>;
   constructor(private router: Router) {
-    this.UIdataModel = new Subject<AdaptUiModelBase>();
-    this.UIdataModel.subscribe(data => {
-      this.model = data;
-      });
-    this.routingModel = new BehaviorSubject<RoutingModel>(new RoutingModel);
+    const website = new Website;
+    website.pages = [];
+    const page = new Page;
+    page.name = 'No model loaded';
+    website.pages.push(page);
+    this.websiteModel = new BehaviorSubject<Website>(website);
+    this.UIdataModel = new BehaviorSubject<Page>(this.websiteModel.getValue().pages[0]);
+    this.routing = new BehaviorSubject<RoutingModel>(new RoutingModel);
   }
 }

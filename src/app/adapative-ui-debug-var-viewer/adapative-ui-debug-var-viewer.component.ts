@@ -20,7 +20,9 @@ export class AdapativeUIDebugVarViewerComponent implements OnInit {
   constructor(ctxchaServ: ContextChangeService, uimdServ: AdaptiveUIModelService, reServ: RuleEngineService) {
     this.context = ctxchaServ.CTXObserver;
     this.uimodel = uimdServ.UIdataModel.pipe<string>(map((dm) => {
-      return dm.toJSON();
+      /*return dm.toJSON();*/
+      // JSON.stringify(dm);
+      return null;
     }
     ));
     this.adaptationRules = reServ.ruleSet;

@@ -9,9 +9,5 @@ import { Component} from '@angular/core';
   styleUrls: ['./adaptive-uibutton.component.css']
 })
 export class AdaptiveUibuttonComponent extends AdaptiveUielementbase {
-  constructor(sanitizer: DomSanitizer) {
-    super();
-  }
-  public isBlueVar: boolean;
 
 }

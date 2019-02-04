@@ -1,3 +1,4 @@
+import { Page } from './../AngularDSL/Page';
 import { AdaptiveUIContainerComponent } from './../Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
 import { StyleAdaptationVisitor } from './../style-adaptation-visitor';
 import { AdaptiveUIComponentReflectionService } from './../adaptive-uicomponent-reflection.service';
@@ -13,6 +14,7 @@ import { ContextModelContainer } from '../ContextModell/ContextModelContainer';
 import { RoutingModel, AdaptiveRoute } from '../Adaptive-UI-DataModel/routing-model';
 import { Router } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { Button } from '../AngularDSL/Button';
 
 @Component({
   selector: 'app-adapative-ui-debug-initializer',
@@ -39,23 +41,24 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
     if (this.initOnlyOnce) {
       this.initOnlyOnce = false;
       //
-      const UIdataModel = new AdaptUiModelBase;
-      UIdataModel.tags = 'test';
-      UIdataModel.Component = this.reflectServ.AdaptiveUIComponentDict['AdaptiveUIContainerComponent'];
-      const button = new AdaptUiModelBase;
-      button.Component = AdaptiveUibuttonComponent;
-      button.children = null;
-      button.tags = 'rem';
-      UIdataModel.children = [button];
-      this.uidmServ.UIdataModel.next(UIdataModel);
-      // Routing Model
-      const routingModel = new RoutingModel;
-      const UIdataModel2 = new AdaptUiModelBase;
-      UIdataModel2.Component = AdaptiveUIContainerComponent;
-      UIdataModel2.style = {'background-color': 'yellow'};
-      routingModel.routes.push(new AdaptiveRoute('', UIdataModel));
-      routingModel.routes.push(new AdaptiveRoute('info', UIdataModel2));
-      this.uidmServ.routingModel.next(routingModel);
+      const initModel = this.uidmServ.websiteModel.getValue();
+      initModel.pages = [];
+      const initPage = new Page;
+      initPage.elements = [];
+      const b = new Button;
+      initPage.elements.push(b);
+      const secondPage = new Page;
+      initModel.pages.push(initPage);
+      initPage.tags = 'test';
+      initModel.pages.push(secondPage);
+
+      this.uidmServ.websiteModel.next(initModel);
+      this.uidmServ.UIdataModel.next(initPage);
+      const routes = new RoutingModel;
+      routes.routes = [];
+      routes.routes.push(new AdaptiveRoute('', initPage));
+      routes.routes.push(new AdaptiveRoute('info', secondPage));
+      this.uidmServ.routing.next(routes);
 
 
       /* Rule engine init*/
@@ -72,7 +75,10 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
       adapt2.targetTags = ['test'];
       adapt2.kind = AdaptationKind.Style;
       const adapt3 = new Adaptation;
-      adapt3.params = [{'color': 'green'}, {'type': 'AdaptiveUibuttonComponent', 'tags': 'zed'}];
+      const btn = new Button();
+      btn.tags = 'zed';
+      btn.style = {'color': 'green' };
+      adapt3.params = [{'model': btn}];
       adapt3.targetTags = ['test'];
       adapt3.kind = AdaptationKind.Add;
       const adapt4 = new Adaptation;

@@ -36,4 +36,6 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
   entryComponents: [AdaptiveUIContainerComponent, AdaptiveUibuttonComponent, AdaptiveUICoreComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

@@ -1,6 +1,10 @@
-import { DomSanitizer } from '@angular/platform-browser';
-import { Component, ComponentFactoryResolver, ViewChildren, ChangeDetectorRef } from '@angular/core';
+import { Container } from './../../AngularDSL/Container';
+import { Button } from './../../AngularDSL/Button';
+import { Element } from './../../AngularDSL/Element';
+import { ModelResolutionService } from './../../model-resolution.service';
+import { Component, ComponentFactoryResolver, ChangeDetectorRef, Type } from '@angular/core';
 import { AdaptiveUielementbase } from '../adaptive-uielementbase';
+import { AdaptiveUibuttonComponent } from '../adaptive-uibutton/adaptive-uibutton.component';
 
 @Component({
   selector: 'app-adaptive-uicontainer',
@@ -8,31 +12,42 @@ import { AdaptiveUielementbase } from '../adaptive-uielementbase';
   styleUrls: ['./adaptive-uicontainer.component.css']
 })
 export class AdaptiveUIContainerComponent extends AdaptiveUielementbase {
-
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private changeDec: ChangeDetectorRef) {
-  super();
+  public model: Container;
+  constructor(
+    private changeDec: ChangeDetectorRef,
+    private modelResolver: ModelResolutionService,
+    private componentFactoryResolver: ComponentFactoryResolver) {
+    super();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewChecked() {
-   this.loadComponent();
+   this.loadComponent(this.adHost, this.model);
    this.changeDec.detectChanges();
   }
-
-  public loadComponent() {
+  public resolve(model: Element): Type<any> {
+    if (model instanceof Container){
+      return AdaptiveUIContainerComponent;
+    }
+    else {
+      return this.modelResolver.resolve(model);
+    }
+  }
+  public loadComponent(adHost, model: Element) {
     let  i = 0;
-    if (this.adHost !== undefined) {
-    this.adHost.forEach(element => {
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.children[i].Component);
-      const viewContainerRef = element.viewContainerRef;
-      viewContainerRef.clear();
+    if (adHost !== undefined) {
+      if (model instanceof Container){
+        adHost.forEach(ele => {
+          const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.resolve(model.elements[i]));
+          const viewContainerRef = ele.viewContainerRef;
+          viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent(componentFactory);
-    (<AdaptiveUielementbase>componentRef.instance).model = this.model.children[i];
-    (<AdaptiveUielementbase>componentRef.instance).children = this.model.children[i].children;
-    this.model.children[i].ComponentInstace = componentRef.instance;
-    i++;
-    });
+          const componentRef = viewContainerRef.createComponent(componentFactory);
+          (<AdaptiveUielementbase>componentRef.instance).model = (<Container>model).elements[i];
+          (<any>(<Container>model).elements[i]).ComponentInstace = componentRef.instance;
+          i++;
+        });
+      }
     }
   }
 }
