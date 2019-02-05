@@ -1,7 +1,5 @@
-import { Container } from './AngularDSL/Container';
-import { Element } from './AngularDSL/Element';
-import { Visitor } from './visitor';
-import { AdaptUiModelBase } from './Adaptive-UI-DataModel/adapt-ui-model-base';
+import { Container } from '../AngularDSL/Container';
+import { Element } from '../AngularDSL/Element';
 import { BaseVisitor } from './base-visitor';
 export class ModelRemoveAdaptationVisitor extends BaseVisitor {
   visit(model: Element, parent: Element) {

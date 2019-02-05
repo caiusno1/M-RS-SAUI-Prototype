@@ -1,13 +1,11 @@
-import { RuleEngineService } from './../rule-engine.service';
-import { AdaptiveUIContainerComponent } from './../Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
-import { AdaptiveUielementbase } from './../Adaptive-UI-Elements/adaptive-uielementbase';
-import { AdaptiveUIModelService } from './../adaptive-uimodel.service';
-import { ContextChangeService } from './../context-change.service';
-import { AdaptUiModelBase } from 'src/app/Adaptive-UI-DataModel/adapt-ui-model-base';
-import { ContextModelContainer } from './../ContextModell/ContextModelContainer';
-import { Component, OnInit, Input, ComponentRef } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, last } from 'rxjs/operators';
+import { ContextChangeService } from 'src/app/Adaptive-UI-Services/context-change.service';
+import { Component, OnInit } from '@angular/core';
+import { ContextModelContainer } from 'src/app/ContextModell/ContextModelContainer';
+import { Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AdaptiveUIModelService } from 'src/app/Adaptive-UI-Services/adaptive-uimodel.service';
+import { RuleEngineService } from 'src/app/Adaptive-UI-Services/rule-engine.service';
+
 @Component({
   selector: 'app-adapative-ui-debug-var-viewer',
   templateUrl: './adapative-ui-debug-var-viewer.component.html',

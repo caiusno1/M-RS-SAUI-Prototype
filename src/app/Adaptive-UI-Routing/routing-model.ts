@@ -1,4 +1,4 @@
-import { AdaptUiModelBase } from './adapt-ui-model-base';
+import { AdaptUiModelBase } from '../experimentation_area/adapt-ui-model-base';
 import { Page } from '../AngularDSL/Page';
 export class RoutingModel {
   public routes: AdaptiveRoute[];

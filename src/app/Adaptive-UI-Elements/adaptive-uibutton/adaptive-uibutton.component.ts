@@ -1,4 +1,4 @@
-import { DomSanitizer } from '@angular/platform-browser';
+import { Heading } from './../../AngularDSL/Heading';
 import { AdaptiveUielementbase } from './../adaptive-uielementbase';
 import { Component} from '@angular/core';
 

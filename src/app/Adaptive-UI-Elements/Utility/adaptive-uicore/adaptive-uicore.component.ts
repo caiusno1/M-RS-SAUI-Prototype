@@ -1,10 +1,8 @@
-import { element } from 'protractor';
-import { Element } from './../AngularDSL/Element';
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { AdaptiveUIContainerComponent } from '../Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
-import { AdaptiveUIModelService } from '../adaptive-uimodel.service';
-import { ActivatedRoute} from '@angular/router';
-import { Page } from '../AngularDSL/Page';
+import { AdaptiveUIModelService } from 'src/app/Adaptive-UI-Services/adaptive-uimodel.service';
+import { Component, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
+import { AdaptiveUIContainerComponent } from '../../adaptive-uicontainer/adaptive-uicontainer.component';
+import { Page } from 'src/app/AngularDSL/Page';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-adaptive-uicore',
@@ -27,8 +25,8 @@ export class AdaptiveUICoreComponent implements OnInit {
       }
     });
   }
-  public SetUpUI(uiDM: Element) {
-    this.root.model = <Page>uiDM;
+  public SetUpUI(uiDM: Page) {
+    this.root.model = uiDM;
     (<any>this.root.model).ComponentInstace = this.root;
     this.changeDec.detectChanges();
   }

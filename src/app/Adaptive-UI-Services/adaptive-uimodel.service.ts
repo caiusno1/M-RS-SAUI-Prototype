@@ -1,9 +1,9 @@
-import { Website } from './AngularDSL/Website';
+import { Website } from '../AngularDSL/Website';
 import {  BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { RoutingModel, AdaptiveRoute } from './Adaptive-UI-DataModel/routing-model';
-import { Router, Route} from '@angular/router';
-import { Page } from './AngularDSL/Page';
+import { Router} from '@angular/router';
+import { Page } from '../AngularDSL/Page';
+import { RoutingModel } from '../Adaptive-UI-Routing/routing-model';
 
 @Injectable({
   providedIn: 'root'

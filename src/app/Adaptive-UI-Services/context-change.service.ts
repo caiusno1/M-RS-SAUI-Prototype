@@ -1,4 +1,4 @@
-import { ContextModelContainer } from './ContextModell/ContextModelContainer';
+import { ContextModelContainer } from '../ContextModell/ContextModelContainer';
 import { Injectable } from '@angular/core';
 import { Subject} from 'rxjs';
 

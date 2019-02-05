@@ -1,6 +1,6 @@
-import { RuleEngineService } from './../../rule-engine.service';
+import { RuleEngineService } from 'src/app/Adaptive-UI-Services/rule-engine.service';
+
 import { Component, OnInit } from '@angular/core';
-import { Message } from '../../message';
 // tslint:disable-next-line:no-unused-expression
 declare var nools: any;
 declare var hallo: any;

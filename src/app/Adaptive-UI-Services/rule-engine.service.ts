@@ -1,4 +1,4 @@
-import { Observable, Subject, BehaviorSubject, OperatorFunction } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import { AdaptiveUIModelService } from './adaptive-uimodel.service';
 import { AdaptationService } from './adaptation.service';
 import { Adaptation } from './adaptation';
@@ -31,5 +31,15 @@ export class RuleEngineService {
   }
   public match(func) {
     this.session.match(func);
+  }
+  public assertMatchAndRetract(fact){
+    this.assert(fact);
+    const a = this;
+    this.session.match().then(function(){
+      a.retract(fact);
+    });
+  }
+  private retract(fact){
+    this.session.retract(fact);
   }
 }

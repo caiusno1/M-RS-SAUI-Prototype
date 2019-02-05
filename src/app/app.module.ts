@@ -1,6 +1,6 @@
-import { AdaptationService } from './adaptation.service';
-import { RuleEngineService } from './rule-engine.service';
-import { AdaptiveUIBindingAnchorDirective } from 'src/app/AdaptiveUIBindingAnchorDirective';
+import { AdaptationService } from './Adaptive-UI-Services/adaptation.service';
+import { RuleEngineService } from './Adaptive-UI-Services/rule-engine.service';
+import { AdaptiveUIBindingAnchorDirective } from 'src/app/Adaptive-UI-Elements/Utility/AdaptiveUIBindingAnchorDirective';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { AdaptiveUIContainerComponent } from './Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
 import { AdaptiveUibuttonComponent } from './Adaptive-UI-Elements/adaptive-uibutton/adaptive-uibutton.component';
 import { NoolsTestComponent } from './experimentation_area/nools-test/nools-test.component';
-import { AdapativeUIDebugVarViewerComponent } from './adapative-ui-debug-var-viewer/adapative-ui-debug-var-viewer.component';
-import { AdapativeUIDebugInitializerComponent } from './adapative-ui-debug-initializer/adapative-ui-debug-initializer.component';
-import { AdaptiveUICoreComponent } from './adaptive-uicore/adaptive-uicore.component';
+import { AdaptiveUICoreComponent } from './Adaptive-UI-Elements/Utility/adaptive-uicore/adaptive-uicore.component';
+import { AdapativeUIDebugVarViewerComponent } from './debug/adapative-ui-debug-var-viewer/adapative-ui-debug-var-viewer.component';
+import { AdapativeUIDebugInitializerComponent } from './debug/adapative-ui-debug-initializer/adapative-ui-debug-initializer.component';
+import { AdaptiveUIHeadingComponent } from './Adaptive-UI-Elements/adaptive-uiheading/adaptive-uiheading.component';
 const appRoutes: Routes = [
   { path: '**', component: AdaptiveUICoreComponent }
 ];
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     NoolsTestComponent,
     AdapativeUIDebugVarViewerComponent,
     AdapativeUIDebugInitializerComponent,
-    AdaptiveUICoreComponent
+    AdaptiveUICoreComponent,
+    AdaptiveUIHeadingComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
   ],
   providers: [RuleEngineService, AdaptationService],
   bootstrap: [AppComponent],
-  entryComponents: [AdaptiveUIContainerComponent, AdaptiveUibuttonComponent, AdaptiveUICoreComponent]
+  entryComponents: [AdaptiveUIContainerComponent, AdaptiveUibuttonComponent, AdaptiveUICoreComponent, AdaptiveUIHeadingComponent]
 })
 export class AppModule {
 

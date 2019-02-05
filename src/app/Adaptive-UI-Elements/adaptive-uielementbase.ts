@@ -1,9 +1,6 @@
-import { ModelResolutionService } from './../model-resolution.service';
 import { Element } from './../AngularDSL/Element';
-import { AdaptUiModelBase } from '../Adaptive-UI-DataModel/adapt-ui-model-base';
-import { AdaptiveUIBindingAnchorDirective } from '../AdaptiveUIBindingAnchorDirective';
-import { ViewChildren, ComponentFactoryResolver } from '@angular/core';
-import { Container } from '../AngularDSL/Container';
+import { AdaptiveUIBindingAnchorDirective } from './Utility/AdaptiveUIBindingAnchorDirective';
+import { ViewChildren} from '@angular/core';
 
 export class AdaptiveUielementbase {
   @ViewChildren(AdaptiveUIBindingAnchorDirective) adHost: AdaptiveUIBindingAnchorDirective[];

@@ -1,6 +1,4 @@
-import { Element } from './AngularDSL/Element';
-import { Visitor } from './visitor';
-import { AdaptUiModelBase } from './Adaptive-UI-DataModel/adapt-ui-model-base';
+import { Element } from '../AngularDSL/Element';
 import { BaseVisitor } from './base-visitor';
 export class StyleAdaptationVisitor extends BaseVisitor {
   public _tags: string[];

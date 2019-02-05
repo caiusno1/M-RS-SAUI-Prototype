@@ -1,11 +1,8 @@
 import { Container } from './../../AngularDSL/Container';
-import { Button } from './../../AngularDSL/Button';
 import { Element } from './../../AngularDSL/Element';
-import { ModelResolutionService } from './../../model-resolution.service';
+import { ModelResolutionService } from '../../Adaptive-UI-Services/model-resolution.service';
 import { Component, ComponentFactoryResolver, ChangeDetectorRef, Type } from '@angular/core';
 import { AdaptiveUielementbase } from '../adaptive-uielementbase';
-import { AdaptiveUibuttonComponent } from '../adaptive-uibutton/adaptive-uibutton.component';
-
 @Component({
   selector: 'app-adaptive-uicontainer',
   templateUrl: './adaptive-uicontainer.component.html',

@@ -1,9 +1,5 @@
-import { Container } from './AngularDSL/Container';
-import { Element } from './AngularDSL/Element';
-import { element } from 'protractor';
-import { AdaptUiModelBase } from './Adaptive-UI-DataModel/adapt-ui-model-base';
-import { AdaptiveUibuttonComponent } from './Adaptive-UI-Elements/adaptive-uibutton/adaptive-uibutton.component';
-import { container } from '@angular/core/src/render3';
+import { Container } from '../AngularDSL/Container';
+import { Element } from '../AngularDSL/Element';
 
 export abstract class BaseVisitor {
   public _tags = [];

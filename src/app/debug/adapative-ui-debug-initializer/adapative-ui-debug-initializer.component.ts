@@ -1,20 +1,19 @@
-import { Page } from './../AngularDSL/Page';
-import { AdaptiveUIContainerComponent } from './../Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
-import { StyleAdaptationVisitor } from './../style-adaptation-visitor';
-import { AdaptiveUIComponentReflectionService } from './../adaptive-uicomponent-reflection.service';
-import { RuleEngineService } from './../rule-engine.service';
-import { AdaptiveUIModelService } from './../adaptive-uimodel.service';
-import { AppComponent } from './../app.component';
-import { ContextChangeService } from './../context-change.service';
-import { Component, OnInit, Input, Host } from '@angular/core';
-import { AdaptUiModelBase } from '../Adaptive-UI-DataModel/adapt-ui-model-base';
-import { AdaptiveUibuttonComponent } from '../Adaptive-UI-Elements/adaptive-uibutton/adaptive-uibutton.component';
-import { Adaptation, AdaptationKind } from '../adaptation';
-import { ContextModelContainer } from '../ContextModell/ContextModelContainer';
-import { RoutingModel, AdaptiveRoute } from '../Adaptive-UI-DataModel/routing-model';
+import { Heading } from './../../AngularDSL/Heading';
+import { ListLayout } from './../../AngularDSL/ListLayout';
+import { GridLayout } from './../../AngularDSL/GridLayout';
+import { CardLayout } from './../../AngularDSL/CardLayout';
+import { ContextModelContainer } from './../../ContextModell/ContextModelContainer';
+import { Button } from './../../AngularDSL/Button';
+import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
+import { ContextChangeService } from 'src/app/Adaptive-UI-Services/context-change.service';
+import { AdaptiveUIModelService } from 'src/app/Adaptive-UI-Services/adaptive-uimodel.service';
+import { RuleEngineService } from 'src/app/Adaptive-UI-Services/rule-engine.service';
+import { AdaptiveUIComponentReflectionService } from 'src/app/experimentation_area/adaptive-uicomponent-reflection.service';
 import { Router } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
-import { Button } from '../AngularDSL/Button';
+import { RoutingModel, AdaptiveRoute } from 'src/app/Adaptive-UI-Routing/routing-model';
+import { Page } from 'src/app/AngularDSL/Page';
+import { Adaptation, AdaptationKind } from 'src/app/Adaptive-UI-Services/adaptation';
 
 @Component({
   selector: 'app-adapative-ui-debug-initializer',
@@ -27,7 +26,6 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
   constructor(private ctxchaServ: ContextChangeService,
     private uidmServ: AdaptiveUIModelService,
     private ruleEngine: RuleEngineService,
-    private reflectServ: AdaptiveUIComponentReflectionService,
     private router: Router) {
   }
 
@@ -45,8 +43,18 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
       initModel.pages = [];
       const initPage = new Page;
       initPage.elements = [];
+      const cl = new CardLayout;
+      initPage.layout = cl;
+      const header = new Heading;
+      header.text = 'My Adaptive UI Prototype with a Model@Runtime approach';
+      header.level = 1;
+      initPage.elements.push(header);
       const b = new Button;
       initPage.elements.push(b);
+      const b2 = new Button;
+      initPage.elements.push(b2);
+      const b3 = new Button;
+      initPage.elements.push(b3);
       const secondPage = new Page;
       initModel.pages.push(initPage);
       initPage.tags = 'test';
@@ -63,8 +71,7 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
 
       /* Rule engine init*/
       this.ctxchaServ.CTXObserver.subscribe((ctx) => {
-        this.ruleEngine.assert(ctx);
-        this.ruleEngine.match(undefined);
+        this.ruleEngine.assertMatchAndRetract(ctx);
       });
       const adapt = new Adaptation;
       adapt.params = {'background-color': 'blue'};

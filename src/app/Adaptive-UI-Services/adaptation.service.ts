@@ -1,9 +1,9 @@
-import { ModelRemoveAdaptationVisitor } from './model-remove-adaptation-visitor';
-import { ModelAddAdaptationVisitor } from './model-add-adaptation-visitor';
+import { ModelRemoveAdaptationVisitor } from '../Adaptation-Visitors/model-remove-adaptation-visitor';
+import { ModelAddAdaptationVisitor } from '../Adaptation-Visitors/model-add-adaptation-visitor';
 import { Adaptation, AdaptationKind } from './adaptation';
 import { AdaptiveUIModelService } from './adaptive-uimodel.service';
 import { Injectable } from '@angular/core';
-import { StyleAdaptationVisitor } from './style-adaptation-visitor';
+import { StyleAdaptationVisitor } from '../Adaptation-Visitors/style-adaptation-visitor';
 
 @Injectable({
   providedIn: 'root'
