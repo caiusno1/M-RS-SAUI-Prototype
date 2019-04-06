@@ -1,4 +1,4 @@
-import { AdaptiveUibuttonComponent } from './Adaptive-UI-Elements/adaptive-uibutton/adaptive-uibutton.component';
+/*import { AdaptiveUibuttonComponent } from './Adaptive-UI-Elements/adaptive-uibutton/adaptive-uibutton.component';
 import { AdaptiveUIContainerComponent } from './Adaptive-UI-Elements/adaptive-uicontainer/adaptive-uicontainer.component';
 import { Injectable, Type } from '@angular/core';
 
@@ -17,4 +17,4 @@ export class AdaptiveUIComponentReflectionService {
   private AddComponent2Dict(type: Type<any>) {
     this.AdaptiveUIComponentDict[type.name] = type;
   }
-}
+}*/

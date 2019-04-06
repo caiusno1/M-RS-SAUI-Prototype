@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "9"
+dist: trusty
+sudo: required
+
+before_script:
+  - npm install -g @angular/cli
+
+script:
+  - ng build --prod --base-href https://caiusno1.github.io/M-RS-SAUI-Prototype/
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  local_dir: dist/AdaptiveUIAtRuntimePOC
+  keep_history: true
+  on:
+    branch: develop

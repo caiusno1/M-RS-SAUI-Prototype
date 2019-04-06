@@ -9,7 +9,6 @@ import { AppComponent } from 'src/app/app.component';
 import { ContextChangeService } from 'src/app/Adaptive-UI-Services/context-change.service';
 import { AdaptiveUIModelService } from 'src/app/Adaptive-UI-Services/adaptive-uimodel.service';
 import { RuleEngineService } from 'src/app/Adaptive-UI-Services/rule-engine.service';
-import { AdaptiveUIComponentReflectionService } from 'src/app/experimentation_area/adaptive-uicomponent-reflection.service';
 import { Router } from '@angular/router';
 import { RoutingModel, AdaptiveRoute } from 'src/app/Adaptive-UI-Routing/routing-model';
 import { Page } from 'src/app/AngularDSL/Page';

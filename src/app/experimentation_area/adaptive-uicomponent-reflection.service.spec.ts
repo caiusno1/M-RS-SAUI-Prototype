@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+/*import { TestBed } from '@angular/core/testing';
 
 import { AdaptiveUIComponentReflectionService } from './adaptive-uicomponent-reflection.service';
 
@@ -9,4 +9,4 @@ describe('AdaptiveUIComponentReflectionService', () => {
     const service: AdaptiveUIComponentReflectionService = TestBed.get(AdaptiveUIComponentReflectionService);
     expect(service).toBeTruthy();
   });
-});
+});*/
