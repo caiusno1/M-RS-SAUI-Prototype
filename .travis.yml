@@ -4,6 +4,11 @@ node_js:
 dist: trusty
 sudo: required
 
+# safelist
+branches:
+  only:
+  - master
+
 before_script:
   - npm install -g @angular/cli
 
