@@ -1,4 +1,4 @@
-# AdaptiveUIAtRuntimePOC
+# AdaptiveUIAtRuntimePOC [![Build Status](https://travis-ci.org/caiusno1/M-RS-SAUI-Prototype.svg?branch=master)](https://travis-ci.org/caiusno1/M-RS-SAUI-Prototype)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3. For further information about the project and its intentions consider the wiki.
 
