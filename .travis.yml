@@ -17,4 +17,4 @@ deploy:
   local_dir: dist/AdaptiveUIAtRuntimePOC
   keep_history: true
   on:
-    branch: develop
+    branch: master
