@@ -1,5 +1,5 @@
-import { Container } from '../AngularDSL/Container';
-import { Element } from '../AngularDSL/Element';
+import { Container } from '../WAML/Container';
+import { Element } from '../WAML/Element';
 import { BaseVisitor } from './base-visitor';
 export class ModelRemoveAdaptationVisitor extends BaseVisitor {
   visit(model: Element, parent: Element) {

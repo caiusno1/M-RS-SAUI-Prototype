@@ -1,8 +1,7 @@
-import { Heading } from './../../AngularDSL/Heading';
 import { AdaptiveUielementbase } from './../adaptive-uielementbase';
 import { Component} from '@angular/core';
 
-
+//
 @Component({
   selector: 'app-adaptive-uibutton',
   templateUrl: './adaptive-uibutton.component.html',

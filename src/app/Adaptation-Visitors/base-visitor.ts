@@ -1,5 +1,5 @@
-import { Container } from '../AngularDSL/Container';
-import { Element } from '../AngularDSL/Element';
+import { Container } from '../WAML/Container';
+import { Element } from '../WAML/Element';
 
 export abstract class BaseVisitor {
   public _tags = [];

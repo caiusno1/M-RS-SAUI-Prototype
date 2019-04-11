@@ -1,4 +1,4 @@
-import { Element } from './../AngularDSL/Element';
+import { Element } from './../WAML/Element';
 import { AdaptiveUIBindingAnchorDirective } from './Utility/AdaptiveUIBindingAnchorDirective';
 import { ViewChildren} from '@angular/core';
 

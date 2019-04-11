@@ -1,8 +1,9 @@
-import { Container } from './../../AngularDSL/Container';
-import { Element } from './../../AngularDSL/Element';
+import { Container } from './../../WAML/Container';
+import { Element } from './../../WAML/Element';
 import { ModelResolutionService } from '../../Adaptive-UI-Services/model-resolution.service';
 import { Component, ComponentFactoryResolver, ChangeDetectorRef, Type } from '@angular/core';
 import { AdaptiveUielementbase } from '../adaptive-uielementbase';
+//
 @Component({
   selector: 'app-adaptive-uicontainer',
   templateUrl: './adaptive-uicontainer.component.html',

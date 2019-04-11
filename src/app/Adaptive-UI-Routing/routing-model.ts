@@ -1,5 +1,5 @@
 import { AdaptUiModelBase } from '../experimentation_area/adapt-ui-model-base';
-import { Page } from '../AngularDSL/Page';
+import { WebPage } from '../WAML/WebPage';
 export class RoutingModel {
   public routes: AdaptiveRoute[];
   constructor() {
@@ -8,8 +8,8 @@ export class RoutingModel {
 }
 export class AdaptiveRoute {
   public path: string;
-  public model: Page;
-  constructor(ppath: string, pmodel: Page) {
+  public model: WebPage;
+  constructor(ppath: string, pmodel: WebPage) {
     this.path = ppath;
     this.model = pmodel;
   }

@@ -1,4 +1,4 @@
-import { Element } from '../AngularDSL/Element';
+import { Element } from '../WAML/Element';
 import { BaseVisitor } from './base-visitor';
 export class StyleAdaptationVisitor extends BaseVisitor {
   public _tags: string[];

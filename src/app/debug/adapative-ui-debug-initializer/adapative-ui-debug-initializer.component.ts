@@ -1,9 +1,10 @@
-import { Heading } from './../../AngularDSL/Heading';
-import { ListLayout } from './../../AngularDSL/ListLayout';
-import { GridLayout } from './../../AngularDSL/GridLayout';
-import { CardLayout } from './../../AngularDSL/CardLayout';
+import { WebPage } from 'src/app/WAML/WebPage';
+import { Input } from './../../WAML/Input';
+import { Caption } from './../../WAML/Caption';
+import { ListLayout } from './../../WAML/ListLayout';
+import { GridLayout } from './../../WAML/GridLayout';
+import { DefaultLayout } from './../../WAML/DefaultLayout';
 import { ContextModelContainer } from './../../ContextModell/ContextModelContainer';
-import { Button } from './../../AngularDSL/Button';
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { ContextChangeService } from 'src/app/Adaptive-UI-Services/context-change.service';
@@ -11,9 +12,8 @@ import { AdaptiveUIModelService } from 'src/app/Adaptive-UI-Services/adaptive-ui
 import { RuleEngineService } from 'src/app/Adaptive-UI-Services/rule-engine.service';
 import { Router } from '@angular/router';
 import { RoutingModel, AdaptiveRoute } from 'src/app/Adaptive-UI-Routing/routing-model';
-import { Page } from 'src/app/AngularDSL/Page';
 import { Adaptation, AdaptationKind } from 'src/app/Adaptive-UI-Services/adaptation';
-
+//
 @Component({
   selector: 'app-adapative-ui-debug-initializer',
   templateUrl: './adapative-ui-debug-initializer.component.html',
@@ -40,21 +40,21 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
       //
       const initModel = this.uidmServ.websiteModel.getValue();
       initModel.pages = [];
-      const initPage = new Page;
+      const initPage = new WebPage;
       initPage.elements = [];
-      const cl = new CardLayout;
+      const cl = new DefaultLayout;
       initPage.layout = cl;
-      const header = new Heading;
-      header.text = 'My Adaptive UI Prototype with a Model@Runtime approach';
+      const header = new Caption;
+      header.drawableValue = 'My Adaptive UI Prototype with a Model@Runtime approach';
       header.level = 1;
       initPage.elements.push(header);
-      const b = new Button;
+      const b = new Input;
       initPage.elements.push(b);
-      const b2 = new Button;
+      const b2 = new Input;
       initPage.elements.push(b2);
-      const b3 = new Button;
+      const b3 = new Input;
       initPage.elements.push(b3);
-      const secondPage = new Page;
+      const secondPage = new WebPage;
       initModel.pages.push(initPage);
       initPage.tags = 'test';
       initModel.pages.push(secondPage);
@@ -81,7 +81,7 @@ export class AdapativeUIDebugInitializerComponent implements OnInit {
       adapt2.targetTags = ['test'];
       adapt2.kind = AdaptationKind.Style;
       const adapt3 = new Adaptation;
-      const btn = new Button();
+      const btn = new Input();
       btn.tags = 'zed';
       btn.style = {'color': 'green' };
       adapt3.params = [{'model': btn}];

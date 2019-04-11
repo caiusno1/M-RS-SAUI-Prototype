@@ -1,6 +1,6 @@
 import { BaseVisitor } from './base-visitor';
-import { Element } from '../AngularDSL/Element';
-import { Container } from '../AngularDSL/Container';
+import { Element } from '../WAML/Element';
+import { Container } from '../WAML/Container';
 export class ModelAddAdaptationVisitor extends BaseVisitor {
   public addModel: Element;
   public _tags: string[];

@@ -1,7 +1,7 @@
 
 /** Generated Code
 * emf ecore to javascript
-* generated at 2019-04-11T18:12:40.252+02:00
+* generated at 2019-04-11T18:50:59.42+02:00
 * (C) XSLT ecore2ts - Kai Biermeier
 **/
 import { EString } from './EString';
