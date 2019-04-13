@@ -1,0 +1,3 @@
+[submodule "TriGGEngine"]
+	path = TriGGEngine
+	url = git@github.com:caiusno1/TriGG.js.git
