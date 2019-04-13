@@ -1,6 +1,11 @@
-# Consistent Runtime UI Adaptations (bachelor thesis repository)
+# Consistent Runtime UI Adaptations (bachelor thesis)
+## Is this project matured ?
+No, it is not. I just currently writing my thesis. But some examples already work.
+## How do you syncronize Context and UI?
+I use a formalism called Triple Graph Grammar and implement it (more or less) in TypeScript/ Javascript.
 ## How to clone this repo ?
 This repository uses a submodule (https://git-scm.com/book/de/v1/Git-Tools-Submodule) so there is additional work needed to clone this repository. Additional info therefore can be taken from the provided link. (Or just ask me ;-)).
+For now only collaborators can access the TriggEngine submodule. If you wish to have an insight just contact me.
 ## AdaptiveUIAtRuntimePOC (Angular CLI Documentation)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3. For further information about the project and its intentions consider the wiki.
