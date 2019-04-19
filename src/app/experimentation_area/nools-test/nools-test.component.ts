@@ -1,4 +1,4 @@
-import { RuleEngineService } from 'src/app/Adaptive-UI-Services/rule-engine.service';
+//import { RuleEngineService } from 'src/app/Adaptive-UI-Services/rule-engine.service';
 
 import { Component, OnInit } from '@angular/core';
 // tslint:disable-next-line:no-unused-expression
@@ -12,7 +12,7 @@ declare var hallo: any;
 })
 export class NoolsTestComponent implements OnInit {
 
-  constructor(engine: RuleEngineService) {
+  constructor(/*engine: RuleEngineService*/) {
     /*engine.addRule('Goodbye', [Message, 'm', 'm.text =~ /.*goodbye$/'], function (facts) {
       console.log(facts.m.text);
     });

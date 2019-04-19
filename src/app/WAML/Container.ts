@@ -12,7 +12,7 @@ export class Container extends Element{
   public type = 'Container';
   public eClass: string;
   public $ref: string;
-  
+
   // Type: #//Element
   public elements: Element[];
 
@@ -23,4 +23,3 @@ export class Container extends Element{
   public name: EString;
 
 }
-    

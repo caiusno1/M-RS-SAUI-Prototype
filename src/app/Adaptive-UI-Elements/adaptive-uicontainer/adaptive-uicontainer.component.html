@@ -1,4 +1,5 @@
 <div class="ad-banner-example" [ngStyle]="adatptstyle">
+    Title: {{model.name}}
     <div [className]="model.layout.type" *ngIf="model.layout" >
       <ng-template *ngFor="let child of model.elements" ad-ui-host></ng-template>
     </div>

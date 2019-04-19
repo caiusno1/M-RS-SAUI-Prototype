@@ -1,6 +1,4 @@
-
-
+import { Vision } from './Vision';
 export class UserContext {
-  public blind = false;
-  public age: number;
+  public vision: Vision;
 }

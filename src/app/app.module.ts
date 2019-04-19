@@ -1,5 +1,3 @@
-import { AdaptationService } from './Adaptive-UI-Services/adaptation.service';
-import { RuleEngineService } from './Adaptive-UI-Services/rule-engine.service';
 import { AdaptiveUIBindingAnchorDirective } from 'src/app/Adaptive-UI-Elements/Utility/AdaptiveUIBindingAnchorDirective';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,8 +9,8 @@ import { AdaptiveUibuttonComponent } from './Adaptive-UI-Elements/adaptive-uibut
 import { NoolsTestComponent } from './experimentation_area/nools-test/nools-test.component';
 import { AdaptiveUICoreComponent } from './Adaptive-UI-Elements/Utility/adaptive-uicore/adaptive-uicore.component';
 import { AdapativeUIDebugVarViewerComponent } from './debug/adapative-ui-debug-var-viewer/adapative-ui-debug-var-viewer.component';
-import { AdapativeUIDebugInitializerComponent } from './debug/adapative-ui-debug-initializer/adapative-ui-debug-initializer.component';
 import { AdaptiveUIHeadingComponent } from './Adaptive-UI-Elements/adaptive-uiheading/adaptive-uiheading.component';
+import { TriggEngineModule } from 'TriGGEngine/Examples/TGGExample1/projects/trigg-engine/src/public_api';
 const appRoutes: Routes = [
   { path: '**', component: AdaptiveUICoreComponent }
 ];
@@ -24,7 +22,6 @@ const appRoutes: Routes = [
     AdaptiveUibuttonComponent,
     NoolsTestComponent,
     AdapativeUIDebugVarViewerComponent,
-    AdapativeUIDebugInitializerComponent,
     AdaptiveUICoreComponent,
     AdaptiveUIHeadingComponent
   ],
@@ -32,9 +29,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes
     ),
-    BrowserModule
+    BrowserModule,
+    TriggEngineModule
   ],
-  providers: [RuleEngineService, AdaptationService],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [AdaptiveUIContainerComponent, AdaptiveUibuttonComponent, AdaptiveUICoreComponent, AdaptiveUIHeadingComponent]
 })
