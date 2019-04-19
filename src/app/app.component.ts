@@ -18,13 +18,6 @@ export class AppComponent {
     this.srcmodel_ctx.userContext = new UserContext();
     this.srcmodel_ctx.userContext.vision = new Vision();
     this.srcmodel_ctx.userContext.vision.value = 0.5;
-    let trgmodel_ifml = null;
-    /*const trgmodel_ifml: Website = new Website();
-    trgmodel_ifml.pages = [];
-    trgmodel_ifml.pages.push(new Page());
-    trgmodel_ifml.pages[0].name = 'MyWebsite';*/
-    // console.log(srcmodel_ctx.userContext.vision.value == 0.5);
-    // console.log(trgmodel_ifml.pages[0].name == 'MyWebsite');
     const ruleset = [
         {
         'name': 'test1',
@@ -44,7 +37,7 @@ export class AppComponent {
           [WebApp, 'w', 'w']
         ],
         'trggreenpattern': [
-          [WebPage, 'p', `p.name == 'The Webpage'`]
+          [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background-color": "green"}'`]
         ],
         'trgbrighingEdges': [{
           'node1': 'w',
@@ -62,20 +55,20 @@ export class AppComponent {
           [UserContext, 'uctx', '!dcl.declaredSrc[uctx]', 'from ctx.userContext']
         ],
         'trggreenpattern': [
-          [WebApp, 'w', `w.title == 'testWebsite' && !dcl.declaredSrc[w]`]
+          [WebApp, 'w', `w.title == 'testWebsite'  &&!dcl.declaredSrc[w]`]
         ]
       }
     ];
     modServ.pushSrcModel(this.srcmodel_ctx);
-    modServ.pushTrgModel(trgmodel_ifml);
+    modServ.pushTrgModel(null);
     engine.init(ruleset, modServ);
     engine.modelServ.registerForAfterSync(() => {
       const trgModel = <WebApp>modServ.getTrgModel();
       console.log(trgModel);
       if (trgModel){
         adaptUIService.websiteModel.next(<WebApp>modServ.getTrgModel());
-        if (trgModel.pages){
-          adaptUIService.UIdataModel.next(<any>(<WebApp>modServ.getTrgModel()).pages);
+        if (trgModel.pages && trgModel.pages[0]){
+          adaptUIService.UIdataModel.next(<any>(<WebApp>modServ.getTrgModel()).pages[0]);
         }
       }
     });

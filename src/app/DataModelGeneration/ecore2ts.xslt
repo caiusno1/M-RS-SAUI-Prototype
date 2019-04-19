@@ -22,7 +22,7 @@ export class <xsl:value-of select="@name"/> <xsl:if test="@eSuperTypes"> extends
   public $ref: string;
   <xsl:for-each select="eStructuralFeatures">
   // Type: <xsl:value-of select="@eType"/>
-  public <xsl:value-of select="@name"/>: <xsl:call-template name="substring-after-last"><xsl:with-param name="string" select="@eType" /><xsl:with-param name="delimiter" select="'//'" /></xsl:call-template><xsl:if test="@upperBound>1 or @upperBound=-1">[]</xsl:if>;
+  public <xsl:value-of select="@name"/>: <xsl:call-template name="substring-after-last"><xsl:with-param name="string" select="@eType" /><xsl:with-param name="delimiter" select="'//'" /></xsl:call-template><xsl:if test="@upperBound>1 or @upperBound=-1">[] = []</xsl:if>;
 </xsl:for-each>
 }
     </xsl:if>

@@ -7,15 +7,17 @@ export class RuntimeUIModelBase {
 
   private set ComponentInstace(instance) {
     this._ComponentInstace = instance;
-    this.style = this._style;
+    if (this._style){
+      instance.setStyle(JSON.parse(this._style));
+    }
   }
   private get ComponentInstace() {
     return this._ComponentInstace;
   }
 
-  public set style(styleString: any) {
-    if (this.ComponentInstace) {
-      this.ComponentInstace.setStyle(styleString);
+  public set __style(styleString: any) {
+    if (this.ComponentInstace && styleString) {
+      this.ComponentInstace.setStyle(JSON.parse(styleString));
     }
     this._style = styleString;
   }
