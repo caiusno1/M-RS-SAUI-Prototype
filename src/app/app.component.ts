@@ -1,3 +1,7 @@
+import { Paragraph } from './WAML/Paragraph';
+import { DefaultLayout } from './WAML/DefaultLayout';
+import { Layout } from './WAML/Layout';
+import { Caption } from './WAML/Caption';
 import { AdaptiveUIModelService } from './Adaptive-UI-Services/adaptive-uimodel.service';
 import { Vision } from './ContextModell/Vision';
 import { ContextModelContainer } from './ContextModell/ContextModelContainer';
@@ -6,6 +10,7 @@ import { TriggEngine, TriggModelService } from 'TriGGEngine/Examples/TGGExample1
 import { UserContext } from './ContextModell/user-context';
 import { WebApp } from './WAML/WebApp';
 import { WebPage } from './WAML/WebPage';
+import { Text } from './WAML/Text';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,7 +42,10 @@ export class AppComponent {
           [WebApp, 'w', 'w']
         ],
         'trggreenpattern': [
-          [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background-color": "green"}'`]
+          [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background-color": "green"}'`],
+          [DefaultLayout, 'l', 'l', 'from p.layout'],
+          [Caption, 'c', `c.level === 1 && c.drawableValue === 'Welcome'`, 'from p.elements'],
+          [Paragraph, 'pa', `pa.drawableValue === 'Hallo Welt'`, 'from p.elements']
         ],
         'trgbrighingEdges': [{
           'node1': 'w',
@@ -55,9 +63,41 @@ export class AppComponent {
           [UserContext, 'uctx', '!dcl.declaredSrc[uctx]', 'from ctx.userContext']
         ],
         'trggreenpattern': [
-          [WebApp, 'w', `w.title == 'testWebsite'  &&!dcl.declaredSrc[w]`]
+          [WebApp, 'w', `w.title == 'Adapt UI Mars'  &&!dcl.declaredSrc[w]`]
         ]
-      }
+      },
+      {
+        'name': 'test3',
+        'srcblackpattern': [
+          [ContextModelContainer, 'ctx', 'dcl.declaredSrc[ctx]'],
+          [UserContext, 'uctx', 'dcl.declaredSrc[uctx]', 'from ctx.userContext']
+        ],
+        'srcbrighingEdges': [{
+          'node1': 'uctx',
+          'node2': 'v',
+          'edgeName': 'vision'
+        }],
+        'srcgreenpattern': [
+          [Vision, 'v', 'v.value === 0 && !dcl.declaredSrc[v]']
+        ],
+        'trgblackpattern': [
+          [WebApp, 'w', 'w']
+        ],
+        'trggreenpattern': [
+          [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background-color": "green"}'`],
+          [DefaultLayout, 'l', 'l', 'from p.layout'],
+          [Caption, 'c', `c.level === 1 && c.drawableValue === 'Welcome'`, 'from p.elements'],
+          [Paragraph, 'pa', `pa.drawableValue === 'Got it'`, 'from p.elements']
+        ],
+        'trgbrighingEdges': [{
+          'node1': 'w',
+          'node2': 'p',
+          'edgeName': 'pages'
+        }],
+        'corr': [
+          {'refsrc': 'v', 'reftrg': 'p'}
+        ]
+      },
     ];
     modServ.pushSrcModel(this.srcmodel_ctx);
     modServ.pushTrgModel(null);
@@ -72,5 +112,11 @@ export class AppComponent {
         }
       }
     });
+  }
+  onClick(){
+    console.log('on click');
+    this.srcmodel_ctx.userContext.vision.value = 0;
+    this.modServ.pushSrcModel(this.srcmodel_ctx);
+    console.log(this.modServ.getSrcModel());
   }
 }

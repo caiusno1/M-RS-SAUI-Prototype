@@ -5,8 +5,7 @@ import { ViewChildren} from '@angular/core';
 export class AdaptiveUielementbase {
   @ViewChildren(AdaptiveUIBindingAnchorDirective) adHost: AdaptiveUIBindingAnchorDirective[];
   private _model: Element;
-  public adatptstyle = {'background-color': 'red'};
-
+  public adatptstyle = null;
   constructor() {}
   public set model(uimodel: Element) {
     this._model = uimodel;

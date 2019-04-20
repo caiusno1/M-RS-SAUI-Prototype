@@ -11,6 +11,7 @@ import { AdaptiveUICoreComponent } from './Adaptive-UI-Elements/Utility/adaptive
 import { AdapativeUIDebugVarViewerComponent } from './debug/adapative-ui-debug-var-viewer/adapative-ui-debug-var-viewer.component';
 import { AdaptiveUIHeadingComponent } from './Adaptive-UI-Elements/adaptive-uiheading/adaptive-uiheading.component';
 import { TriggEngineModule } from 'TriGGEngine/Examples/TGGExample1/projects/trigg-engine/src/public_api';
+import { AdaptiveUIParagraphComponent } from './Adaptive-UI-Elements/adaptive-uiparagraph/adaptive-uiparagraph.component';
 const appRoutes: Routes = [
   { path: '**', component: AdaptiveUICoreComponent }
 ];
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
     NoolsTestComponent,
     AdapativeUIDebugVarViewerComponent,
     AdaptiveUICoreComponent,
-    AdaptiveUIHeadingComponent
+    AdaptiveUIHeadingComponent,
+    AdaptiveUIParagraphComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AdaptiveUIContainerComponent, AdaptiveUibuttonComponent, AdaptiveUICoreComponent, AdaptiveUIHeadingComponent]
+  entryComponents: [AdaptiveUIContainerComponent, AdaptiveUibuttonComponent,
+    AdaptiveUICoreComponent, AdaptiveUIHeadingComponent, AdaptiveUIParagraphComponent]
 })
 export class AppModule {
 

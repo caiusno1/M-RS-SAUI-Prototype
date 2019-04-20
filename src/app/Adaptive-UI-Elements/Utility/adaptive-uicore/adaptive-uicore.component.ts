@@ -1,3 +1,4 @@
+import { WebApp } from './../../../WAML/WebApp';
 import { AdaptiveUIModelService } from 'src/app/Adaptive-UI-Services/adaptive-uimodel.service';
 import { Component, ViewChild, ChangeDetectorRef, OnInit } from '@angular/core';
 import { AdaptiveUIContainerComponent } from '../../adaptive-uicontainer/adaptive-uicontainer.component';
@@ -10,11 +11,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./adaptive-uicore.component.css']
 })
 export class AdaptiveUICoreComponent implements OnInit {
-
+  private model: WebApp;
   @ViewChild(AdaptiveUIContainerComponent) root: AdaptiveUIContainerComponent;
   constructor(public uiDMServ: AdaptiveUIModelService, private changeDec: ChangeDetectorRef, private activateRoute: ActivatedRoute) {
   }
   ngOnInit(): void {
+    this.uiDMServ.websiteModel.subscribe((model) => document.title = model.title);
     this.uiDMServ.UIdataModel.subscribe(dm => this.SetUpUI(dm) );
     this.activateRoute.url.subscribe(purl => {
       if (this.uiDMServ.routing.value) {

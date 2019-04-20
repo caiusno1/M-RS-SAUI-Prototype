@@ -1,2 +1,6 @@
-
-<h1 [ngStyle]="adatptstyle" *ngIf="model.level === 1" > {{model.drawableValue}} </h1>
+<h1 [ngStyle]="adatptstyle" *ngIf="(model.level) == 1" > {{model.drawableValue}} </h1>
+<h2 [ngStyle]="adatptstyle" *ngIf="(model.level) == 2" > {{model.drawableValue}} </h2>
+<h3 [ngStyle]="adatptstyle" *ngIf="(model.level) == 3" > {{model.drawableValue}} </h3>
+<h4 [ngStyle]="adatptstyle" *ngIf="(model.level) == 4" > {{model.drawableValue}} </h4>
+<h5 [ngStyle]="adatptstyle" *ngIf="(model.level) == 5" > {{model.drawableValue}} </h5>
+<h6 [ngStyle]="adatptstyle" *ngIf="(model.level) == 6" > {{model.drawableValue}} </h6>

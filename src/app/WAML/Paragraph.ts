@@ -10,9 +10,8 @@ export class Paragraph extends LeafElement{
   public type = 'Paragraph';
   public eClass: string;
   public $ref: string;
-  
+
   // Type: #//LeafElement
   public elements: LeafElement;
 
 }
-    

@@ -1,3 +1,4 @@
+import { WebPage } from './../../WAML/WebPage';
 import { Container } from './../../WAML/Container';
 import { Element } from './../../WAML/Element';
 import { ModelResolutionService } from '../../Adaptive-UI-Services/model-resolution.service';
@@ -24,7 +25,7 @@ export class AdaptiveUIContainerComponent extends AdaptiveUielementbase {
    this.changeDec.detectChanges();
   }
   public resolve(model: Element): Type<any> {
-    if (model instanceof Container){
+    if (model.constructor === Container || model.constructor === WebPage){
       return AdaptiveUIContainerComponent;
     }
     else {
