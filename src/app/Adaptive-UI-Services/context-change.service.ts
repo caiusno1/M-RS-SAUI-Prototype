@@ -1,16 +1,16 @@
-import { ContextModelContainer } from '../ContextModell/ContextModelContainer';
 import { Injectable } from '@angular/core';
-import { Subject} from 'rxjs';
+import { Subject, BehaviorSubject} from 'rxjs';
+import { ContextML } from '../ContextML/ContextML';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContextChangeService {
-  public CTXObserver: Subject<ContextModelContainer>;
-  public ctx: ContextModelContainer;
+  public CTXObserver: Subject<ContextML>;
+  public ctx: ContextML;
   constructor() {
-    this.CTXObserver = new Subject<ContextModelContainer>();
-    this.ctx = new ContextModelContainer;
+    this.CTXObserver = new BehaviorSubject<ContextML>(new ContextML());
+    this.ctx = new ContextML;
     this.CTXObserver.next(this.ctx);
     this.CTXObserver.subscribe(val => this.ctx = val);
   }

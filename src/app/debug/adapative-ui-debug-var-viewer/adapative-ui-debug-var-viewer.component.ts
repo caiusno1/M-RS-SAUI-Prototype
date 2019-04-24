@@ -1,6 +1,6 @@
+import { ContextML } from './../../ContextML/ContextML';
 import { ContextChangeService } from 'src/app/Adaptive-UI-Services/context-change.service';
 import { Component, OnInit } from '@angular/core';
-import { ContextModelContainer } from 'src/app/ContextModell/ContextModelContainer';
 import { Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AdaptiveUIModelService } from 'src/app/Adaptive-UI-Services/adaptive-uimodel.service';
@@ -11,7 +11,7 @@ import { AdaptiveUIModelService } from 'src/app/Adaptive-UI-Services/adaptive-ui
   styleUrls: ['./adapative-ui-debug-var-viewer.component.css']
 })
 export class AdapativeUIDebugVarViewerComponent implements OnInit {
-  public context: Observable<ContextModelContainer>;
+  public context: Observable<ContextML>;
   public uimodel: Observable<string>;
   public adaptationRules: Observable<any[]>;
   constructor(ctxchaServ: ContextChangeService, uimdServ: AdaptiveUIModelService) {

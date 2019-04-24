@@ -1,9 +1,10 @@
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<xsl:param name="outputdir"/>
 <xsl:output method="text" media-type="text/js" />
 <xsl:template match="/">
   <xsl:for-each select="*/eClassifiers">
-    <xsl:result-document method="text" href="../WAML\{@name}.ts">
+    <xsl:result-document method="text" href="../{$outputdir}\{@name}.ts">
     <xsl:if test="@xsi:type='ecore:EClass'">
 /** Generated Code
 * emf ecore to javascript
@@ -40,14 +41,20 @@ export enum <xsl:value-of select="@name"/> {
     </xsl:if>
     </xsl:result-document>
   </xsl:for-each>
-  <xsl:result-document method="text" href="../WAML\EInt.ts">
+  <xsl:result-document method="text" href="../{$outputdir}\EInt.ts">
 export type EInt = number;
   </xsl:result-document>
-    <xsl:result-document method="text" href="../WAML\EString.ts">
+    <xsl:result-document method="text" href="../{$outputdir}\EString.ts">
 export type EString = string;
   </xsl:result-document>
-  <xsl:result-document method="text" href="../WAML\EBoolean.ts">
+  <xsl:result-document method="text" href="../{$outputdir}\EBoolean.ts">
 export type EBoolean = boolean;
+  </xsl:result-document>
+  <xsl:result-document method="text" href="../{$outputdir}\EDouble.ts">
+export type EDouble = number;
+  </xsl:result-document>
+  <xsl:result-document method="text" href="../{$outputdir}\Double.ts">
+export type Double = number;
   </xsl:result-document>
 </xsl:template>
 <!-- https://stackoverflow.com/questions/9078779/getting-a-substring-after-the-last-occurrence-of-a-character-in-xslt -->

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ContextML" nsURI="http://www.sicp.de/adaptui/contextml/ContextML"
+    nsPrefix="ContextML">
+  <eClassifiers xsi:type="ecore:EClass" name="UserContext">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ageUserDefined" eType="#//AgeUserDefined"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ageCalculated" eType="#//AgeCalculated"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="glasses" eType="#//Glasses"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gender" eType="#//Gender"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vision" eType="#//Vision"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="experience" eType="#//Experience"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mood" eType="#//Mood" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usageTime" eType="#//UsageTime"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="userID" eType="#//UserID"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="language" eType="#//Language"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnviromentContext">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="light" eType="#//Light"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" eType="#//Time" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="date" eType="#//Date" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="weather" eType="#//Weather"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="noiseLevel" eType="#//NoiseLevel"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enviromentID" eType="#//EnviromentID"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlatformContext">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deviceName" eType="#//DeviceName"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fontscale" eType="#//FontScale"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="os_name" eType="#//OSName"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="os_version" eType="#//OSVersion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timezone" eType="#//Timezone"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platformType" eType="#//PlatformType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screenWidth" eType="#//ScreenWidth"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screenHeight" eType="#//ScreenHeight"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platformid" eType="#//PlatformID"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectionType" eType="#//ConnectionType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectionPerformance"
+        eType="#//ConnectionPerformance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="batteryLevel" eType="#//BatteryLevel"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="charging" eType="#//Charging"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextML">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="userContext" eType="#//UserContext"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enviromentContext" eType="#//EnviromentContext"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platformContext" eType="#//PlatformContext"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="customcontextproperty"
+        upperBound="-1" eType="#//CustomContextProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ActivityEnum">
+    <eLiterals name="UNKNOWN" literal="UNKNOWN"/>
+    <eLiterals name="STANDSTILL" value="1"/>
+    <eLiterals name="ON_FOOT" value="2"/>
+    <eLiterals name="ON_BICYCLE" value="3"/>
+    <eLiterals name="IN_VEHICLE" value="4" literal="IN_VEHICLE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConnectionTypeEnum">
+    <eLiterals name="NONE"/>
+    <eLiterals name="wifi" value="1"/>
+    <eLiterals name="cellular" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConnectionPerformanceEnum">
+    <eLiterals name="NONE"/>
+    <eLiterals name="Mobile_2G" value="1" literal="Mobile_2G"/>
+    <eLiterals name="Mobile_3G" value="2"/>
+    <eLiterals name="Mobile_4G" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PlatformTypeEnum">
+    <eLiterals name="UNKNOWN"/>
+    <eLiterals name="desktop" value="1"/>
+    <eLiterals name="mobile" value="2"/>
+    <eLiterals name="tablet" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GenderEnum">
+    <eLiterals name="UNKNOWN"/>
+    <eLiterals name="male" value="1"/>
+    <eLiterals name="female" value="2"/>
+    <eLiterals name="diverse" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExperienceEnum">
+    <eLiterals name="none" value="1"/>
+    <eLiterals name="low" value="2"/>
+    <eLiterals name="intermediate" value="3"/>
+    <eLiterals name="high" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MoodEnum">
+    <eLiterals name="neutral"/>
+    <eLiterals name="anger" value="1"/>
+    <eLiterals name="contempt" value="2"/>
+    <eLiterals name="disgust" value="3"/>
+    <eLiterals name="fear" value="4"/>
+    <eLiterals name="happy" value="5" literal="happy"/>
+    <eLiterals name="sad" value="6" literal="sad"/>
+    <eLiterals name="surprised" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WeatherEnum">
+    <eLiterals name="UNKNOWN"/>
+    <eLiterals name="clear" value="1"/>
+    <eLiterals name="sunny" value="2"/>
+    <eLiterals name="rainy" value="3"/>
+    <eLiterals name="thunderstorm" value="4"/>
+    <eLiterals name="storm" value="5"/>
+    <eLiterals name="cloudy" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AgeUserDefined" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AgeCalculated" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Glasses" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Gender" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//GenderEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Vision" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Experience" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ExperienceEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mood" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//MoodEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UsageTime" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Light" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Double"
+        defaultValueLiteral="0.5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ActivityEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Date" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BatteryLevel" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionType" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ConnectionTypeEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectionPerformance" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//ConnectionPerformanceEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Charging" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Weather" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//WeatherEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NoiseLevel" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeviceName" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FontScale" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OSName" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OSVersion" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Timezone" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlatformType" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//PlatformTypeEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScreenWidth" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScreenHeight" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="provider" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateVelocity" eType="#//UpdateVelocityEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserID" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlatformID" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnviromentID" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomContextProperty" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" eType="#//CustomContextPropertyDatatype"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomContextPropertyDatatype" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomDataTypeEnum" eSuperTypes="#//CustomContextPropertyDatatype">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PredefinedDataType" eSuperTypes="#//CustomContextPropertyDatatype">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UpdateVelocityEnum">
+    <eLiterals name="slow"/>
+    <eLiterals name="fast" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Language" eSuperTypes="#//ContextProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
