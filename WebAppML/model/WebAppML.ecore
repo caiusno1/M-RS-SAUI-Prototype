@@ -11,6 +11,7 @@
         eType="#//WebPage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="startpage" eType="#//WebPage"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="progressive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activePage" eType="#//WebPage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WebPage" eSuperTypes="#//Container">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
