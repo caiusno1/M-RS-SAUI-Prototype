@@ -1,3 +1,4 @@
+import { TGGRule } from './../../TriGGEngine/Examples/TGGExample1/projects/trigg-engine/src/lib/TGGModels/TGGRule';
 import { PlatformContext } from './ContextML/PlatformContext';
 import { ContextChangeService } from 'src/app/Adaptive-UI-Services/context-change.service';
 import { Paragraph } from './WAML/Paragraph';
@@ -12,6 +13,7 @@ import { UserContext } from './ContextML/UserContext';
 import { WebApp } from './WAML/WebApp';
 import { WebPage } from './WAML/WebPage';
 import { EnviromentContext } from './ContextML/EnviromentContext';
+import { TemperatureEnum } from 'TriGGEngine/Examples/TGGExample1/projects/trigg-engine/src/lib/TGGModels/TemperatureEnum';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,11 +27,10 @@ export class AppComponent {
     this.srcmodel_ctx.userContext = new UserContext();
     this.srcmodel_ctx.platformContext = new PlatformContext();
     this.srcmodel_ctx.enviromentContext = new EnviromentContext();
-    this.srcmodel_ctx.userContext.vision = new Vision();
-    this.srcmodel_ctx.userContext.vision.value  = 0.5;
-    const ruleset = [
+    const ruleset: TGGRule[] = [
         {
         'name': 'test1',
+        'temperature': TemperatureEnum.COLD,
         'srcblackpattern': [
           [ContextML, 'ctx', 'dcl.declaredSrc[ctx]'],
           [UserContext, 'uctx', 'dcl.declaredSrc[uctx]', 'from ctx.userContext']
@@ -62,6 +63,7 @@ export class AppComponent {
       },
       {
         'name': 'test2',
+        'temperature': TemperatureEnum.HOT,
         'srcgreenpattern': [
           [ContextML, 'ctx', '!dcl.declaredSrc[ctx]'],
           [UserContext, 'uctx', '!dcl.declaredSrc[uctx]', 'from ctx.userContext']
@@ -72,6 +74,7 @@ export class AppComponent {
       },
       {
         'name': 'test3',
+        'temperature': TemperatureEnum.HOT,
         'srcblackpattern': [
           [ContextML, 'ctx', 'dcl.declaredSrc[ctx]'],
           [UserContext, 'uctx', 'dcl.declaredSrc[uctx]', 'from ctx.userContext']
@@ -82,7 +85,7 @@ export class AppComponent {
           'edgeName': 'vision'
         }],
         'srcgreenpattern': [
-          [Vision, 'v', 'v.value === 0 && !dcl.declaredSrc[v]']
+          [Vision, 'v', 'v.value > 0 && !dcl.declaredSrc[v]']
         ],
         'trgblackpattern': [
           [WebApp, 'w', 'w']
@@ -108,6 +111,7 @@ export class AppComponent {
     engine.init(ruleset, modServ);
     engine.modelServ.registerForAfterSync(() => {
       const trgModel = <WebApp>modServ.getTrgModel();
+      console.log((<any>engine).trg);
       if (trgModel){
         adaptUIService.websiteModel.next(<WebApp>modServ.getTrgModel());
         if (trgModel.pages && trgModel.pages[0]){
