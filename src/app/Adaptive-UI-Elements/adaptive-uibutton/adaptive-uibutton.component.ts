@@ -1,3 +1,4 @@
+import { Input } from './../../WAML/Input';
 import { AdaptiveUielementbase } from './../adaptive-uielementbase';
 import { Component} from '@angular/core';
 
@@ -8,5 +9,5 @@ import { Component} from '@angular/core';
   styleUrls: ['./adaptive-uibutton.component.css']
 })
 export class AdaptiveUibuttonComponent extends AdaptiveUielementbase {
-
+    model: Input;
 }

@@ -12,6 +12,7 @@ import { AdapativeUIDebugVarViewerComponent } from './debug/adapative-ui-debug-v
 import { AdaptiveUIHeadingComponent } from './Adaptive-UI-Elements/adaptive-uiheading/adaptive-uiheading.component';
 import { TriggEngineModule } from 'TriGGEngine/Examples/TGGExample1/projects/trigg-engine/src/public_api';
 import { AdaptiveUIParagraphComponent } from './Adaptive-UI-Elements/adaptive-uiparagraph/adaptive-uiparagraph.component';
+import { DebugVarControllComponent } from './debug/debug-var-controll/debug-var-controll.component';
 const appRoutes: Routes = [
   { path: '**', component: AdaptiveUICoreComponent }
 ];
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     AdapativeUIDebugVarViewerComponent,
     AdaptiveUICoreComponent,
     AdaptiveUIHeadingComponent,
-    AdaptiveUIParagraphComponent
+    AdaptiveUIParagraphComponent,
+    DebugVarControllComponent
   ],
   imports: [
     RouterModule.forRoot(

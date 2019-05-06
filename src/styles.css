@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 .ListLayout>*{
   display: list-item;
+  list-style: none;
+}
+.ListLayout{
+  width: 10vw;
+  height: 100vh;
+}
+html, body {
+  width: 100% !important;
+  max-width: 1940px !important;
+  overflow: auto !important;
+  margin: 0px auto;
+  padding: 0px;
 }

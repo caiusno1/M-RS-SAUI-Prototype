@@ -1,3 +1,7 @@
+import { Time } from './ContextML/Time';
+import { Container } from './WAML/Container';
+import { ListLayout } from './WAML/ListLayout';
+import { Input } from './WAML/Input';
 import { TGGRule } from './../../TriGGEngine/Examples/TGGExample1/projects/trigg-engine/src/lib/TGGModels/TGGRule';
 import { PlatformContext } from './ContextML/PlatformContext';
 import { ContextChangeService } from 'src/app/Adaptive-UI-Services/context-change.service';
@@ -28,83 +32,49 @@ export class AppComponent {
     this.srcmodel_ctx.platformContext = new PlatformContext();
     this.srcmodel_ctx.enviromentContext = new EnviromentContext();
     const ruleset: TGGRule[] = [
-        {
-        'name': 'test1',
+      {
+        'name': 'init',
+        'temperature': TemperatureEnum.HOT,
+        'srcgreenpattern': [
+          [ContextML, 'ctx', '!dcl.declaredSrc.get(ctx)'],
+          [UserContext, 'uctx', '!dcl.declaredSrc.get(uctx)', 'from ctx.userContext'],
+          [PlatformContext, 'pctx', '!dcl.declaredSrc.get(pctx)', 'from ctx.platformContext'],
+          [EnviromentContext, 'ectx', '!dcl.declaredSrc.get(ectx)', 'from ctx.enviromentContext']
+        ],
+        'trggreenpattern': [
+          [WebApp, 'w', `w.title == 'Adapt UI Mars'  && !dcl.declaredTrg.get(w)`],
+          [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background": "lightblue", "height":"100vh"}' && !dcl.declaredTrg.get(p)`, 'from w.pages'],
+          [DefaultLayout, 'l', '!dcl.declaredTrg.get(l)', 'from p.layout'],
+          [Caption, 'c', `c.level === 1 && c.drawableValue === 'Infotainment Example' && !dcl.declaredTrg.get(c)`, 'from p.elements'],
+          [Container, 'cont', `!dcl.declaredTrg.get(l) && cont.__style == '{"float":"left"}'`, 'from p.elements'],
+          [ListLayout, 'contL', `!dcl.declaredTrg.get(contL)`, 'from cont.layout'],
+          [Input, 'homeBtn', `homeBtn.inputType=='button' && homeBtn.drawableValue=='Home' && homeBtn.__style == '{"margin-bottom":"20px"}'`, 'from cont.elements'],
+          [Input, 'radioBtn', `radioBtn.inputType=='button' && radioBtn.drawableValue=='Radio' && radioBtn.__style == '{"margin-bottom":"20px"}'`, 'from cont.elements'],
+          [Input, 'navBtn', `navBtn.inputType=='button' && navBtn.drawableValue=='Nav' && navBtn.__style == '{"margin-bottom":"20px"}'`, 'from cont.elements'],
+          [Container, 'contR', `!dcl.declaredTrg.get(contR) && contR.__style == '{"float":"right"}'`, 'from p.elements'],
+          [ListLayout, 'contRL', `!dcl.declaredTrg.get(contRL)`, 'from contR.layout'],
+          [Input, 'backBtn', `backBtn.inputType=='button' && backBtn.drawableValue=='Back' && backBtn.__style == '{"margin-bottom":"20px"}'`, 'from contR.elements']
+        ]
+      },
+      {
+        'name': 'nightMode',
         'temperature': TemperatureEnum.COLD,
         'srcblackpattern': [
-          [ContextML, 'ctx', 'dcl.declaredSrc[ctx]'],
-          [UserContext, 'uctx', 'dcl.declaredSrc[uctx]', 'from ctx.userContext']
+          [EnviromentContext, 'ectx', 'dcl.declaredSrc.get(ectx)']
         ],
-        'srcbrighingEdges': [{
-          'node1': 'uctx',
-          'node2': 'v',
-          'edgeName': 'vision'
-        }],
         'srcgreenpattern': [
-          [Vision, 'v', 'v.value>0 && !dcl.declaredSrc[v]']
+          [Time, 'time', '!dcl.declaredSrc.get(time) && time.value>20 || time.value<8'],
+        ],
+        'srcbrighingEdges':[
+          {'node1': 'ectx', 'node2': 'time', 'edgeName': 'time'}
         ],
         'trgblackpattern': [
-          [WebApp, 'w', 'w']
+          [WebPage, 'p', `dcl.declaredTrg.get(p)`],
         ],
-        'trggreenpattern': [
-          [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background-color": "green"}'`],
-          [DefaultLayout, 'l', 'l', 'from p.layout'],
-          [Caption, 'c', `c.level === 1 && c.drawableValue === 'Welcome'`, 'from p.elements'],
-          [Paragraph, 'pa', `pa.drawableValue === 'Hallo Welt'`, 'from p.elements']
-        ],
-        'trgbrighingEdges': [{
-          'node1': 'w',
-          'node2': 'p',
-          'edgeName': 'pages'
-        }],
-        'corr': [
-          {'refsrc': 'v', 'reftrg': 'p'}
+        'trgyellowpattern': [
+          [WebPage, 'p', `dcl.declaredTrg.get(p) && p.__style=='{"background":"black", "color":"white"}'`],
         ]
-      },
-      {
-        'name': 'test2',
-        'temperature': TemperatureEnum.HOT,
-        'srcgreenpattern': [
-          [ContextML, 'ctx', '!dcl.declaredSrc[ctx]'],
-          [UserContext, 'uctx', '!dcl.declaredSrc[uctx]', 'from ctx.userContext']
-        ],
-        'trggreenpattern': [
-          [WebApp, 'w', `w.title == 'Adapt UI Mars'  &&!dcl.declaredSrc[w]`]
-        ]
-      },
-      {
-        'name': 'test3',
-        'temperature': TemperatureEnum.HOT,
-        'srcblackpattern': [
-          [ContextML, 'ctx', 'dcl.declaredSrc[ctx]'],
-          [UserContext, 'uctx', 'dcl.declaredSrc[uctx]', 'from ctx.userContext']
-        ],
-        'srcbrighingEdges': [{
-          'node1': 'uctx',
-          'node2': 'v',
-          'edgeName': 'vision'
-        }],
-        'srcgreenpattern': [
-          [Vision, 'v', 'v.value > 0 && !dcl.declaredSrc[v]']
-        ],
-        'trgblackpattern': [
-          [WebApp, 'w', 'w']
-        ],
-        'trggreenpattern': [
-          [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background-color": "green"}'`],
-          [DefaultLayout, 'l', 'l', 'from p.layout'],
-          [Caption, 'c', `c.level === 1 && c.drawableValue === 'Welcome'`, 'from p.elements'],
-          [Paragraph, 'pa', `pa.drawableValue === 'Got it'`, 'from p.elements']
-        ],
-        'trgbrighingEdges': [{
-          'node1': 'w',
-          'node2': 'p',
-          'edgeName': 'pages'
-        }],
-        'corr': [
-          {'refsrc': 'v', 'reftrg': 'p'}
-        ]
-      },
+      }
     ];
     ctxServ.CTXObserver.subscribe((ctx) => modServ.pushSrcModel(ctx));
     ctxServ.CTXObserver.next(this.srcmodel_ctx);
