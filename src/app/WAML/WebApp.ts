@@ -1,3 +1,4 @@
+import { Modality } from './../alert-service.service';
 
 /** Generated Code
 * emf ecore to javascript
@@ -12,7 +13,9 @@ export class WebApp{
   public type = 'WebApp';
   public eClass: string;
   public $ref: string;
-  
+  // Added property
+  public Modality: Modality;
+
   // Type: ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString
   public title: EString;
 
@@ -26,4 +29,3 @@ export class WebApp{
   public progressive: EBoolean;
 
 }
-    

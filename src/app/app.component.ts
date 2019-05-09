@@ -34,7 +34,7 @@ export class AppComponent {
     const ruleset: TGGRule[] = [
       {
         'name': 'init',
-        'temperature': TemperatureEnum.HOT,
+        'temperature': TemperatureEnum.COLD,
         'srcgreenpattern': [
           [ContextML, 'ctx', '!dcl.declaredSrc.get(ctx)'],
           [UserContext, 'uctx', '!dcl.declaredSrc.get(uctx)', 'from ctx.userContext'],
@@ -42,7 +42,7 @@ export class AppComponent {
           [EnviromentContext, 'ectx', '!dcl.declaredSrc.get(ectx)', 'from ctx.enviromentContext']
         ],
         'trggreenpattern': [
-          [WebApp, 'w', `w.title == 'Adapt UI Mars'  && !dcl.declaredTrg.get(w)`],
+          [WebApp, 'w', `w.title == 'Adapt UI Mars' && w.Modality === 1 && !dcl.declaredTrg.get(w)`],
           [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background": "lightblue", "height":"100vh"}' && !dcl.declaredTrg.get(p)`, 'from w.pages'],
           [DefaultLayout, 'l', '!dcl.declaredTrg.get(l)', 'from p.layout'],
           [Caption, 'c', `c.level === 1 && c.drawableValue === 'Infotainment Example' && !dcl.declaredTrg.get(c)`, 'from p.elements'],
@@ -58,7 +58,7 @@ export class AppComponent {
       },
       {
         'name': 'nightMode',
-        'temperature': TemperatureEnum.COLD,
+        'temperature': TemperatureEnum.HOT,
         'srcblackpattern': [
           [EnviromentContext, 'ectx', 'dcl.declaredSrc.get(ectx)']
         ],

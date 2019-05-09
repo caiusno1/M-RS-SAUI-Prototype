@@ -1,3 +1,4 @@
+import { AlertServiceService } from './../../alert-service.service';
 import { ContextML } from './../../ContextML/ContextML';
 import { ContextChangeService } from 'src/app/Adaptive-UI-Services/context-change.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import { Time } from 'src/app/ContextML/Time';
 })
 export class DebugVarControllComponent implements OnInit {
 
-  constructor(private ctxSrv: ContextChangeService) { }
+  constructor(private ctxSrv: ContextChangeService, private alertSrv: AlertServiceService) { }
   private enabled = true;
   ngOnInit() {
   }
@@ -27,6 +28,9 @@ export class DebugVarControllComponent implements OnInit {
         }
         return ctx;
       });
-    }
+  }
+  public alertTest(){
+    this.alertSrv.sayAlert();
+  }
 
 }
