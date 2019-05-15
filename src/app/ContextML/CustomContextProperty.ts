@@ -11,9 +11,9 @@ export class CustomContextProperty extends ContextProperty{
   public type = 'CustomContextProperty';
   public eClass: string;
   public $ref: string;
-  
+
   // Type: #//CustomContextPropertyDatatype
   public datatype: CustomContextPropertyDatatype;
+  public value: any;
 
 }
-    
