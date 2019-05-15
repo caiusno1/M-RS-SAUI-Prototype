@@ -30,6 +30,7 @@ import { NoiseLevel } from './ContextML/NoiseLevel';
 export class AppComponent {
   private srcmodel_ctx: ContextML;
   public ruleset: TGGRule[];
+  private added: boolean;
   constructor(private engine: TriggEngine, private modServ: TriggModelService,
     private adaptUIService: AdaptiveUIModelService, private ctxServ: ContextChangeService){
     this.srcmodel_ctx = new ContextML();
@@ -178,7 +179,7 @@ export class AppComponent {
         'trgyellowpattern': [
           [WebApp, 'p', `dcl.declaredTrg.get(p) &&  p.Modality === 1`],
         ]
-      },
+      }
     ];
     ctxServ.CTXObserver.subscribe((ctx) => modServ.pushSrcModel(ctx));
     ctxServ.CTXObserver.next(this.srcmodel_ctx);
@@ -194,5 +195,29 @@ export class AppComponent {
       }
     });
     window.setTimeout(() => ctxServ.setAndSubmit((ctx) => ctx), 100);
+  }
+  public addRuleTest(){
+    if (!this.added){
+      const tggRule: TGGRule = {
+        'name': 'addRuleTest',
+        'temperature': TemperatureEnum.HOT,
+          'srcblackpattern': [
+            [UserContext, 'uctx', 'dcl.declaredSrc.get(uctx)']
+          ],
+          'srcgreenpattern': [
+            [Vision, 'vision', '!dcl.declaredSrc.get(vision) && vision.value<50'],
+          ],
+          'srcbrighingEdges': [
+            {'node1': 'uctx', 'node2': 'vision', 'edgeName': 'vision'}
+          ],
+          'trgblackpattern': [
+            [WebPage, 'p', `dcl.declaredTrg.get(p)`],
+          ],
+          'trgyellowpattern': [
+            [WebPage, 'p', `dcl.declaredTrg.get(p) && p.__style=='{"border":"1px solid green", "color":"black"}'`],
+        ]};
+      this.engine.addRule(tggRule);
+      this.added = true;
+      }
   }
 }
