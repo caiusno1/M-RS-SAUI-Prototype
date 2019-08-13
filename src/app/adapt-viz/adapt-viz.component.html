@@ -1,0 +1,20 @@
+<div>
+  <h1>Active RuleApplications</h1>
+  <ul>
+    <li *ngFor="let item of adaptViz.activeAdaptations" >{{item.ruleName}}</li>
+  </ul>
+  <h1>(Partitially) Blocked RuleApplications</h1>
+  <ul>
+    <li *ngFor="let blockedRApp of adaptViz.blockedAdaptionsPretty | async" >
+      <div>
+        <p>{{blockedRApp.ruleName}}</p>
+        <label>Blocked By</label>
+        <ul>
+          <li *ngFor="let item of blockedRApp.blockedBy" >
+            {{item.ruleApplication.ruleName}}
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

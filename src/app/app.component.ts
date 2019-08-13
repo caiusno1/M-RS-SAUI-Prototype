@@ -1,3 +1,4 @@
+import { AdaptationVizService } from './AdaptationViz/adaptation-viz.service';
 import { CustomContextProperty } from './ContextML/CustomContextProperty';
 import { Activity } from './ContextML/Activity';
 import { Time } from './ContextML/Time';
@@ -32,7 +33,7 @@ export class AppComponent {
   public ruleset: TGGRule[];
   private added: boolean;
   constructor(private engine: TriggEngine, private modServ: TriggModelService,
-    private adaptUIService: AdaptiveUIModelService, private ctxServ: ContextChangeService){
+    private adaptUIService: AdaptiveUIModelService, private ctxServ: ContextChangeService, private adaptViz: AdaptationVizService){
     this.srcmodel_ctx = new ContextML();
     this.srcmodel_ctx.userContext = new UserContext();
     this.srcmodel_ctx.platformContext = new PlatformContext();
@@ -183,7 +184,7 @@ export class AppComponent {
     ];
     ctxServ.CTXObserver.subscribe((ctx) => modServ.pushSrcModel(ctx));
     ctxServ.CTXObserver.next(this.srcmodel_ctx);
-    engine.init(this.ruleset, modServ);
+    engine.init(this.ruleset, modServ, adaptViz);
     engine.modelServ.registerForAfterSync(() => {
       const trgModel = <WebApp>modServ.getTrgModel();
       console.log((<any>engine).trg);
