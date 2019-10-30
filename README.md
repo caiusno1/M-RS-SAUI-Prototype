@@ -8,6 +8,7 @@ This repository uses a submodule (https://git-scm.com/book/de/v1/Git-Tools-Submo
 For now only collaborators can access the TriggEngine submodule. If you wish to have an insight just contact me.
 ## AdaptiveUIAtRuntimePOC (Angular CLI Documentation)
 
+# AdaptiveUIAtRuntimePOC [![Build Status](https://travis-ci.org/caiusno1/M-RS-SAUI-Prototype.svg?branch=master)](https://travis-ci.org/caiusno1/M-RS-SAUI-Prototype)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3. For further information about the project and its intentions consider the wiki.
 
 ### Development server
