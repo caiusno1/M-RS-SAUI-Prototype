@@ -52,18 +52,18 @@ export class AppComponent {
           [WebApp, 'w', `w.title == 'Adapt UI Mars' && w.Modality === 0 && !dcl.declaredTrg.get(w)`],
           [WebPage, 'p', `p.name == 'The Webpage' && p.__style === '{"background": "lightblue", "height":"100vh"}' && !dcl.declaredTrg.get(p)`, 'from w.pages'],
           [DefaultLayout, 'l', '!dcl.declaredTrg.get(l)', 'from p.layout'],
-          [Caption, 'c', `c.level === 1 && c.drawableValue === 'Infotainment Example' && !dcl.declaredTrg.get(c)`, 'from p.elements'],
+          [Caption, 'c', `c.level === 1 && c.drawableValue === 'AdaptUI MARS Infortainment' && !dcl.declaredTrg.get(c)`, 'from p.elements'],
           [Container, 'cont', `!dcl.declaredTrg.get(l) && cont.__style == '{"float":"left"}'`, 'from p.elements'],
           [ListLayout, 'contL', `!dcl.declaredTrg.get(contL)`, 'from cont.layout'],
-          [Input, 'homeBtn', `homeBtn.inputType=='button' && homeBtn.drawableValue=='Home' && homeBtn.__style == '{"margin-bottom":"10px"}'`, 'from cont.elements'],
-          [Input, 'radioBtn', `radioBtn.inputType=='button' && radioBtn.drawableValue=='Radio' && radioBtn.__style == '{"margin-bottom":"10px"}'`, 'from cont.elements'],
-          [Input, 'navBtn', `navBtn.inputType=='button' && navBtn.drawableValue=='Nav' && navBtn.__style == '{"margin-bottom":"10px"}'`, 'from cont.elements'],
+          [Input, 'homeBtn', `homeBtn.inputType=='button' && homeBtn.drawableValue=='Home' && homeBtn.__style == '{"margin-bottom":"-2px"}'`, 'from cont.elements'],
+          [Input, 'radioBtn', `radioBtn.inputType=='button' && radioBtn.drawableValue=='Radio' && radioBtn.__style == '{"margin-bottom":"-2px"}'`, 'from cont.elements'],
+          [Input, 'navBtn', `navBtn.inputType=='button' && navBtn.drawableValue=='Nav' && navBtn.__style == '{"margin-bottom":"-2px"}'`, 'from cont.elements'],
           [Container, 'contR', `!dcl.declaredTrg.get(contR) && contR.__style == '{"float":"right", "margin-right":"65px"}'`, 'from p.elements'],
           [ListLayout, 'contRL', `!dcl.declaredTrg.get(contRL)`, 'from contR.layout'],
-          [Input, 'backBtn', `backBtn.inputType=='button' && backBtn.drawableValue=='Back' && backBtn.__style == '{"margin-bottom":"10px","margin":"0 0 10px 0" }'`, 'from contR.elements'],
-          [Input, 'settingsBtn', `settingsBtn.inputType=='button' && settingsBtn.drawableValue=='Settings' && settingsBtn.__style == '{"margin-bottom":"10px","margin":"0 0 10px 0" }'`, 'from contR.elements'],
-          [Input, 'louderBtn', `louderBtn.inputType=='button' && louderBtn.drawableValue=='Turn volume up' && louderBtn.__style == '{"margin-bottom":"10px","margin":"0 0 10px 0" }'`, 'from contR.elements'],
-          [Input, 'morequietBtn', `morequietBtn.inputType=='button' && morequietBtn.drawableValue=='Turn volume down' && morequietBtn.__style == '{"margin-bottom":"10px","margin":"0 0 10px 0" }'`, 'from contR.elements']
+          [Input, 'backBtn', `backBtn.inputType=='button' && backBtn.drawableValue=='Back' && backBtn.__style == '{"margin":"0 0 -2px -15px"}'`, 'from contR.elements'],
+          [Input, 'settingsBtn', `settingsBtn.inputType=='button' && settingsBtn.drawableValue=='Settings' && settingsBtn.__style == '{"margin":"0 0 -2px -15px" }'`, 'from contR.elements'],
+          [Input, 'louderBtn', `louderBtn.inputType=='button' && louderBtn.drawableValue=='Turn volume up' && louderBtn.__style == '{"margin":"0 0 -2px -15px" }'`, 'from contR.elements'],
+          [Input, 'morequietBtn', `morequietBtn.inputType=='button' && morequietBtn.drawableValue=='Turn volume down' && morequietBtn.__style == '{"margin":"0 0 -2px -15px" }'`, 'from contR.elements']
         ],
         corr: [{refsrc: 'ctx', reftrg: 'w'}]
       },
@@ -164,7 +164,7 @@ export class AppComponent {
       },
       {
         'name': 'TrafficStateJam',
-        'temperature': TemperatureEnum.HOT,
+        'temperature': TemperatureEnum.COLD,
         'srcblackpattern': [
           [ContextML, 'ctx', 'dcl.declaredSrc.get(ctx)']
         ],

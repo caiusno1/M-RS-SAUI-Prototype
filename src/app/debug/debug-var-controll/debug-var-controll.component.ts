@@ -41,7 +41,7 @@ export class DebugVarControllComponent implements OnInit {
       });
   }
   public alertTest(){
-    this.alertSrv.sayAlert();
+    setTimeout(() => { this.alertSrv.sayAlert(); }, 4000);
   }
   public toogleVisionGoodBad(){
     if (this.ctxSrv.ctx.userContext.vision) {

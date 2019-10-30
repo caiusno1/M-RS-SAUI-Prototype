@@ -1,5 +1,7 @@
 button{
     padding: 5px,5px,5px,5px;
-    width: 15vw;
+    width: 16vw;
+    height: 20vh;
     margin: 0px;
+    font-size: 25px;
 }
