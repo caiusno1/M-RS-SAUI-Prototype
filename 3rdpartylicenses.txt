@@ -10,6 +10,9 @@ MIT
 @angular/router
 MIT
 
+jsondiffpatch
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
@@ -215,6 +218,8 @@ Apache-2.0
  limitations under the License.
  
 
+
+trigg-engine
 
 tslib
 Apache-2.0
