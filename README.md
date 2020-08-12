@@ -1,6 +1,6 @@
 # Consistent Runtime UI Adaptations (bachelor thesis)
 ## Is this project matured ?
-No, it is not. I just currently writing my thesis. But some examples already work.
+No, it is not. It it was a bachelor thesis. Nevertheless a prototypical implementations works.
 ## How do you syncronize Context and UI?
 I use a formalism called Triple Graph Grammar and implement it (more or less) in TypeScript/ Javascript.
 ## How to clone this repo ?
